@@ -10,7 +10,6 @@ import com.example.projback.wzorce.L8.Liskov.Room.Klasy_Pochodne.SmallRoom;
 import com.example.projback.wzorce.L8.Liskov.User.Klasy_Pochodne.Customer;
 import com.example.projback.wzorce.L8.Liskov.User.Klasy_Pochodne.Employee;
 
-
 //###   start L8 Liskov -> Wykazanie zamienności obiektów (Klasa - klasapochodna)
 public class LiskovTesting {
     public static void main(String[] args) {

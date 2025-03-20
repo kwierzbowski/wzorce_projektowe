@@ -7,7 +7,6 @@ import org.springframework.stereotype.Component;
 
 import java.util.regex.Pattern;
 
-
 @Component("advancedValidator_User")
 public class UserValidator_Advanced implements UserValidator {
     private final UserRepository userRepository;

@@ -4,7 +4,6 @@ import com.example.projback.entity.Equipment;
 import com.example.projback.entity.User;
 import org.springframework.stereotype.Component;
 
-
 @Component("simpleValidator_Equipment")
 public class EquipmentValidator_Simple implements EquipmentValidator {
     @Override

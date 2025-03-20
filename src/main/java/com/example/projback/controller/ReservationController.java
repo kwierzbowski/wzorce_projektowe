@@ -72,7 +72,6 @@ ReservationController {
         return reservationFacade.getReservationsByRoomId(id, token);
     }
 
-
     @PutMapping("/employee/update/{reservationId}")
     public ResponseEntity<String> updateReservationStatusAndPrice(
             @PathVariable Long reservationId,
@@ -117,7 +116,6 @@ ReservationController {
 //        reservationServiceCreating.createReservationByMediator(reservation, token);
         reservationFacade.createReservationByMediator(reservation, token);
     }
-
 
 }
 //###   end L3 Facade -> Part 2 - adapting the code to use facade

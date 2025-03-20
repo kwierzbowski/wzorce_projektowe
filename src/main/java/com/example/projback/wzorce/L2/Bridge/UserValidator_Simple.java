@@ -19,4 +19,3 @@ public class UserValidator_Simple implements UserValidator {
         return userRepository.findByUsername(user.getUsername()).isEmpty();
     }
 }
-

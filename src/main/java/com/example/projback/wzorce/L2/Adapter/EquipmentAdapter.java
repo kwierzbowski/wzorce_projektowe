@@ -1,6 +1,7 @@
 package com.example.projback.wzorce.L2.Adapter;
 
 import com.example.projback.entity.Equipment;
+
 //###   start L2 Adapter -> Part 2
 public class EquipmentAdapter implements AdapterInterface {
     private final Equipment equipment;
@@ -21,7 +22,7 @@ public class EquipmentAdapter implements AdapterInterface {
 
 }
 
-// Uage example
+// Usage example
 //        AdapterInterface adapter = new UserAdapter(user);
 //        String name =  adapter.getName();
 

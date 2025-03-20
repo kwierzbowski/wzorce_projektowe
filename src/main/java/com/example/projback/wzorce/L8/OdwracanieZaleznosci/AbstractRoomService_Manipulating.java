@@ -33,6 +33,5 @@ public abstract class AbstractRoomService_Manipulating implements IRoomService_M
     public abstract Room undoLastRoomEdit();
 
 }
-
 //###   end L8 Odwrocenie zaleznosci -> klasa abstrakcyjna
 //###   end L2 Bridge -> Klasa abstrakcyjna

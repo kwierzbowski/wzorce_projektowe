@@ -1,6 +1,5 @@
 package com.example.projback.wzorce.L2.Bridge.AbstractClasses;
 
-
 import com.example.projback.entity.User;
 import com.example.projback.repository.UserRepository;
 import com.example.projback.wzorce.L2.Bridge.UserValidator;

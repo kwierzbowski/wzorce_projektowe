@@ -66,7 +66,7 @@ public class EquipmentServiceImpl extends AbstractEquipmentService_Creating impl
         }
 
         return equipmentRepository.findById(id)
-                .orElseThrow(() -> new IllegalArgumentException("Nie znaleziono wyposażenia o podanym ID."));
+            .orElseThrow(() -> new IllegalArgumentException("Nie znaleziono wyposażenia o podanym ID."));
     }
 
     // Method that returns all available equipment
@@ -110,9 +110,6 @@ public class EquipmentServiceImpl extends AbstractEquipmentService_Creating impl
         }
         //###   end L2 Bridge -> Equipment -> Part 4
 
-
-
-
         //###   start L1 Factory -> Part 1 - usage
 //        Equipment newEquipment = EquipmentFactory.createEquipment(equipment.getName(), equipment.getPrice(), equipment.getDescription(), equipment.getImageName());
 //        return equipmentRepository.save(newEquipment);
@@ -151,7 +148,6 @@ public class EquipmentServiceImpl extends AbstractEquipmentService_Creating impl
         equipmentMediator.notify(newEquipment, "create", token);
         //###   end L5 MEDIATOR -> Equipment - usage
     }
-
 
     //Method that delete equipment based on id
     @Override

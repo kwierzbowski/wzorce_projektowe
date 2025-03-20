@@ -32,7 +32,6 @@ public abstract class AbstractReservationService_Validator implements IReservati
     public abstract void createReservation(MakeReservationDTO reservation, String token);
 
     public abstract Reservation validateReservation(String token, Long reservationId);
-
 }
 //###   end L8 Odwrocenie zaleznosci -> klasa abstrakcyjna
 //###   end L2 Bridge -> Klasa abstrakcyjna

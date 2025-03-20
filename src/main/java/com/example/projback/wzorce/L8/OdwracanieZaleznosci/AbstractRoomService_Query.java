@@ -38,6 +38,5 @@ public abstract class AbstractRoomService_Query implements IRoomService_Query {
 
     public abstract void printAllRoom();
 }
-
 //###   end L8 Odwrocenie zaleznosci -> klasa abstrakcyjna
 //###   end L2 Bridge -> Klasa abstrakcyjna

@@ -7,7 +7,6 @@ import com.example.projback.wzorce.L8.OdwracanieZaleznosci.SegragacjaInterfejsow
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-
 @Component("simpleValidator_Reservation")
 public class ReservationValidator_Simple implements ReservationValidator {
 //    private final IRoomService roomService;

@@ -1,9 +1,9 @@
-//###   start L6 STATE
 package com.example.projback.wzorce.L6.State;
 
 import com.example.projback.entity.Reservation;
 import org.springframework.stereotype.Component;
 
+//###   start L6 State
 @Component
 public class PendingState implements ReservationState {
     @Override

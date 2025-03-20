@@ -25,8 +25,6 @@ public abstract class AbstractRoomService_Creating implements IRoomService_Creat
     }
 
     public abstract Room createRoom(Room room, String token);
-
 }
-
 //###   end L8 Odwrocenie zaleznosci -> klasa abstrakcyjna
 //###   end L2 Bridge -> Klasa abstrakcyjna

@@ -2,7 +2,6 @@ package com.example.projback.dto;
 
 import lombok.NoArgsConstructor;
 
-
 @NoArgsConstructor
 public class ResponseDTO<T> {
     private boolean success;

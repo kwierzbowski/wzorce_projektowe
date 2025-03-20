@@ -1,8 +1,8 @@
-//###   start L6 STRATEGY
 package com.example.projback.wzorce.L6.Strategy;
 
 import org.springframework.stereotype.Component;
 
+//###   start L6 STRATEGY
 @Component
 public class PricingContext {
     private PricingStrategy strategy;

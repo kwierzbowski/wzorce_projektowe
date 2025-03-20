@@ -180,7 +180,6 @@ public class ReservationServiceImpl extends AbstractReservationService_Creating 
         //###   end L5 MEDIATOR -> Reservation - usage
     }
 
-
     @Override
     public Reservation validateReservation(String token, Long reservationId) {
         String username = jwtUtil.extractUsername(token.substring(7));
@@ -265,8 +264,6 @@ public class ReservationServiceImpl extends AbstractReservationService_Creating 
         //###   start L5 MEMENTO -> Reservation -> Usage (Saving in history)
         reservationCaretaker.save(new Memento<>(reservation.clone()));
         //###   end L5 MEMENTO -> Reservation -> Usage (Saving in history)
-
-
 
         reservationRepository.save(reservation);
     }
@@ -404,7 +401,6 @@ public class ReservationServiceImpl extends AbstractReservationService_Creating 
         return reservations;
         //###   end L5 Interpreter -> usage
     }
-
 
     //###   start L5 MEMENTO -> Reservation -> Usage (Undo changes)
     @Override

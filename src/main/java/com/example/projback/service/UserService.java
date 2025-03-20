@@ -31,7 +31,6 @@ public class UserService extends UserServiceBridge {
 
     }
 
-
     public void registerUser(User user) {
         //###   start L2 Bridge -> User -> Part 4
         if (!validator.validate(user)) {
@@ -67,5 +66,4 @@ public class UserService extends UserServiceBridge {
     public Optional<User> findByUsername(String username) {
         return userRepository.findByUsername(username);
     }
-
 }

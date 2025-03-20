@@ -5,7 +5,6 @@ import jakarta.persistence.*;
 
 import java.util.List;
 
-
 @Entity
 public class Room implements Cloneable {
     @Id

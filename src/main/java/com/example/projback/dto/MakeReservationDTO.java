@@ -17,7 +17,6 @@ public class MakeReservationDTO {
     private List<Long> additionalEquipment;
     private Double estimatedPrice;
 
-
     public List<Long> getAdditionalEquipment() {
         return additionalEquipment;
     }

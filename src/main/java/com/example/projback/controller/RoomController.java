@@ -38,8 +38,6 @@ public class RoomController {
 
     private final RoomFacade roomFacade;
 
-
-
     @Autowired
     public RoomController(RoomFacade roomFacade, IRoomService_Manipulating roomServiceManipulating,
                           IRoomService_Creating roomServiceCreating,
@@ -49,7 +47,6 @@ public class RoomController {
         this.roomServiceCreating = roomServiceCreating;
         this.roomServiceQuery = roomServiceQuery;
     }
-
 
     @PostMapping("/employee/add")
     public ResponseEntity<Room> createRoom(@RequestBody Room room, @RequestHeader("Authorization") String token) {

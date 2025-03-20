@@ -40,7 +40,6 @@ public abstract class AbstractReservationService_Manipulating implements IReserv
     public abstract void updateReservationFields(Reservation reservation, UpdateReservationDTO updateReservation);
 
     public abstract Reservation undoLastReservationEdit();
-
 }
 //###   end L8 Odwrocenie zaleznosci -> klasa abstrakcyjna
 //###   end L2 Bridge -> Klasa abstrakcyjna

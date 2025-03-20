@@ -1,6 +1,5 @@
 package com.example.projback.wzorce.L5.Mediator;
 
-
 import com.example.projback.config.JwtUtil;
 import com.example.projback.entity.Equipment;
 import com.example.projback.entity.Room;

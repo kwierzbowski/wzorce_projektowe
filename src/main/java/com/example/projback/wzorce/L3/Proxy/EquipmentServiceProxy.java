@@ -10,8 +10,6 @@ import com.example.projback.wzorce.L8.OdwracanieZaleznosci.SegragacjaInterfejsow
 import com.example.projback.wzorce.L8.OdwracanieZaleznosci.SegragacjaInterfejsow.Equipment.IEquipmentService_Query;
 import org.springframework.stereotype.Service;
 import com.example.projback.wzorce.L6.Observer.EquipmentNotificationSystem;
-
-
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -48,8 +46,6 @@ public class EquipmentServiceProxy implements IEquipmentService_Manipulating, IE
 
     }
 
-
-
     @Override
     public Equipment saveEquipment(Equipment equipment, String token) {
         validateAdminAccess(token);
@@ -58,7 +54,6 @@ public class EquipmentServiceProxy implements IEquipmentService_Manipulating, IE
         //###   end L6 Observer
         return equipment;
     }
-
 
     @Override
     public String deleteEquipment(Long equipmentId, String token) {

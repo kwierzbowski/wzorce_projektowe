@@ -17,6 +17,7 @@ import org.springframework.web.filter.OncePerRequestFilter;
 
 import java.io.IOException;
 import java.util.List;
+
 //###   start L7 Open-Closed Principle -> Part 3 - code opened for extension, closed for modification. token validator
 //###   start L2 Bridge -> JwtAuthenticationFilter -> Usage
 @Component

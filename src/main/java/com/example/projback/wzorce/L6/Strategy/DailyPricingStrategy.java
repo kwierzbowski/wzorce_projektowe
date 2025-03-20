@@ -1,4 +1,3 @@
-//###   start L6 STRATEGY
 package com.example.projback.wzorce.L6.Strategy;
 
 import com.example.projback.entity.Reservation;
@@ -7,14 +6,25 @@ import org.springframework.stereotype.Component;
 
 import java.time.Duration;
 
+//###   start L6 Strategy
 @Component
 public class DailyPricingStrategy implements PricingStrategy {
     @Override
     public void applyPricing(Reservation reservation, Room room) {
-        if (room == null || reservation == null) {
-            System.out.println("Błąd: Room lub Reservation jest null!");
-            return;
+
+//#####   start L9 6. dodaj zwracanie wyjątków zamiast kodów błędów (3 wystąpienia)
+//        if (room == null || reservation == null) {
+//            System.out.println("Błąd: Room lub Reservation jest null!");
+//            return;
+//        }
+        if (reservation == null) {
+            throw new IllegalArgumentException("Rezerwacja jest null!");
         }
+        if (room == null) {
+            throw new IllegalArgumentException("Pokój dla tej rezerwacji nie istnieje!");
+        }
+//#####   end L9 6. dodaj zwracanie wyjątków zamiast kodów błędów (3 wystąpienia)
+
         long days = Duration.between(reservation.getStartTime().toInstant(), reservation.getEndTime().toInstant()).toDays();
         if (days == 0) {
             days = 1;
@@ -29,4 +39,4 @@ public class DailyPricingStrategy implements PricingStrategy {
                 ", final_price = " + totalPrice);
     }
 }
-//###   end L6 STRATEGY
+//###   end L6 Strategy

@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.HashMap;
 import java.util.Map;
+
 //###   start L3 Proxy -> Part 1, additional security with limited
 @Service
 public class AuthServiceProxy implements AuthServiceInterface {

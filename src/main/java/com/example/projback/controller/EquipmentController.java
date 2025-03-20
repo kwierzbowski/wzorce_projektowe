@@ -20,8 +20,6 @@ public class EquipmentController {
 //    @Autowired
 //    private EquipmentService equipmentService;
 
-
-
     /// ### start L3 Proxy -> Part 3, changing EquipmentController by adding EquipmentServiceProxy instead EquipmentService
     private final EquipmentServiceProxy equipmentServiceProxy;
 

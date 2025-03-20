@@ -1,6 +1,5 @@
 package com.example.projback.entity;
 
-
 import com.example.projback.wzorce.L6.Visitor.PricingVisitor;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -135,7 +134,5 @@ public class Reservation implements Cloneable {
         visitor.visit(this);
     }
     //### end L6 Visitor
-
-
 }
 
