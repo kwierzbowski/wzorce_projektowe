@@ -31,3 +31,8 @@ build/
 
 ### VS Code ###
 .vscode/
+
+.iksde.java
+/output.txt
+/src/main/java/iksde.java
+/src/main/resources/application.properties
