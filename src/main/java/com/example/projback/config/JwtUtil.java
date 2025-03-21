@@ -10,7 +10,6 @@ import org.springframework.stereotype.Component;
 import java.util.Date;
 import java.util.function.Function;
 //###   start L7 Open-Closed Principle -> Part 1 - code opened for extension, closed for modification
-//###   start L7 Single Responsibility -> Part 1 - only operations with JWT
 @Component
 public class JwtUtil implements TokenProviderInterface{
     private final String SECRET_KEY;
@@ -81,5 +80,4 @@ public class JwtUtil implements TokenProviderInterface{
     }
 }
 
-//###   end L7 Single Responsibility -> Part 1
 //###   end L7 Open-Closed Principle -> Part 1

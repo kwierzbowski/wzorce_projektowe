@@ -30,7 +30,6 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 //###   start L2 Bridge -> UserService -> Usage
-//###   start L7 Single Responsibility -> Part 3 - service implementation, only responsible for equipment
 //###   start L8 Odwrocenie zaleznosci -> Usage
 @Service
 public class EquipmentServiceImpl extends AbstractEquipmentService_Creating implements IEquipmentService_Manipulating, IEquipmentService_Query {
@@ -254,5 +253,3 @@ public class EquipmentServiceImpl extends AbstractEquipmentService_Creating impl
     }
     //###   end L1 Prototype -> Part 1 -> Usage
 }
-
-//###   end L7 Single Responsibility -> Part 3

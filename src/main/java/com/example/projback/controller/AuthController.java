@@ -11,7 +11,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
-//###   start L7 Single Responsibility -> Part 2 - controller that is responsible for handling http request about authorisation.
 //###   start L3 Facade -> Part 1 - adapting the code to use facade
 @RestController
 @RequestMapping("api/auth/")
@@ -76,4 +75,3 @@ public class AuthController {
 
 }
 
-//###   end L7 Single Responsibility -> Part 2
