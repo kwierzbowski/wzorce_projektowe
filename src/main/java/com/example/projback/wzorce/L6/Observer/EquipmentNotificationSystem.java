@@ -8,7 +8,7 @@ import java.util.List;
 
 //###   start L6 Observer
 
-//###   start L9, 1.  znaczących (jasnych i zrozumiałych) nazw do klas, metod i zmiennych, znaczących w całym programie to samo (bez synonimów)
+//###   start L9, 1. (part 2) znaczących (jasnych i zrozumiałych) nazw do klas, metod i zmiennych, znaczących w całym programie to samo (bez synonimów)
 //@Component
 //public class ItemNotificationSystem {
 //    private final List<ItemObserver> observers = new ArrayList<>();
@@ -38,6 +38,6 @@ public class EquipmentNotificationSystem {
         }
     }
 }
-//###   end L9, 1.  znaczących (jasnych i zrozumiałych) nazw do klas, metod i zmiennych, znaczących w całym programie to samo (bez synonimów)
+//###   end L9, 1. (part 2) znaczących (jasnych i zrozumiałych) nazw do klas, metod i zmiennych, znaczących w całym programie to samo (bez synonimów)
 
 //###   end L6 Observer

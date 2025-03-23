@@ -11,7 +11,7 @@ public class FreeCancellation extends CancellationTemplate {
 
     @Override
     protected boolean canBeCancelled(Reservation reservation) {
-        return true; // Każda rezerwacja może być anulowana
+        return true;
     }
 
     @Override

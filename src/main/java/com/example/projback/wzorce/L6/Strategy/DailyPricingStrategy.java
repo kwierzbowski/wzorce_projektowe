@@ -5,7 +5,7 @@ import com.example.projback.entity.Room;
 import org.springframework.stereotype.Component;
 import java.time.Duration;
 
-////###   start L9, 7. dostosuj kod tak, by sie nie powtarzal
+////###   start L9, 7. (part 2) dostosuj kod tak, by sie nie powtarzal
 ////###   start L6 Strategy
 
 //@Component
@@ -13,7 +13,7 @@ import java.time.Duration;
 //    @Override
 //    public void applyPricing(Reservation reservation, Room room) {
 //
-////#####   start L9 6. dodaj zwracanie wyjątków zamiast kodów błędów (3 wystąpienia)
+////#####   start L9, 6. (part 2) dodaj zwracanie wyjątków zamiast kodów błędów (3 wystąpienia)
 ////        if (room == null || reservation == null) {
 ////            System.out.println("Błąd: Room lub Reservation jest null!");
 ////            return;
@@ -24,7 +24,7 @@ import java.time.Duration;
 //        if (room == null) {
 //            throw new IllegalArgumentException("Pokój dla tej rezerwacji nie istnieje!");
 //        }
-////#####   end L9 6. dodaj zwracanie wyjątków zamiast kodów błędów (3 wystąpienia)
+////#####   end L9, 6. (part 2) dodaj zwracanie wyjątków zamiast kodów błędów (3 wystąpienia)
 //
 //        long hours = (long) Math.ceil(Duration.between(reservation.getStartTime().toInstant(), reservation.getEndTime().toInstant()).toMinutes() / 60.0);
 //
@@ -58,4 +58,4 @@ public class DailyPricingStrategy extends PricingStrategy {
     }
 }
 ////###   end L6 Strategy
-////###   end L9, 7. dostosuj kod tak, by sie nie powtarzal
+////###   end L9, 7. (part 2) dostosuj kod tak, by sie nie powtarzal
