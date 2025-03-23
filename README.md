@@ -15,9 +15,9 @@
   - [x] 7. dostosuj kod tak, by się nie powtarzał - 1 pkt.
   - [X] 8. wyeliminuj magiczne liczby - 1 pkt.
      
-- [ ] **Tydzień 10** Zastosuj zasady (9 pkt.):
-  - [ ] 1. utwórz 3 interfejsy funkcyjne, wykonaj ich implementacje i napisz kod używający instancji tych interfejsów poprzez zastosowanie wyrażenia lambda - 6 pkt.
-  - [ ] 2. pokaż na przykładzie wykorzystanie programowania funkcyjnego w strumieniowym przetwarzaniu 3 kolekcji - 3 pkt.
+- [x] **Tydzień 10** Zastosuj zasady (9 pkt.):
+  - [x] 1. utwórz 3 interfejsy funkcyjne, wykonaj ich implementacje i napisz kod używający instancji tych interfejsów poprzez zastosowanie wyrażenia lambda - 6 pkt.
+  - [x] 2. pokaż na przykładzie wykorzystanie programowania funkcyjnego w strumieniowym przetwarzaniu 3 kolekcji - 3 pkt.
      
 - [X] **Tydzień 11** Zastosuj zasady (6 pkt.):
   - [X] 1. użyj w programie AspectJ do wykonania 3 aspektów - 6 pkt.

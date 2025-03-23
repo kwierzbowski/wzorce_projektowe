@@ -114,7 +114,7 @@ public class EquipmentServiceProxy implements IEquipmentService_Manipulating, IE
         }
     }
 
-    //###   start L10, EquipmentFilter (part 3)
+    //###   start L10, EquipmentFilter (part 2)
     public List<Equipment> getEquipmentFilteredByPrice(double minPrice) {
         EquipmentFilter priceFilter = eq -> eq.getPrice() > minPrice;
         System.out.println("\nL10 | All equipment:");
@@ -122,7 +122,7 @@ public class EquipmentServiceProxy implements IEquipmentService_Manipulating, IE
                 .filter(priceFilter::test)
                 .toList();
     }
-    //###   end L10, EquipmentFilter (part 3)
+    //###   end L10, EquipmentFilter (part 2)
 
 }
 //###   end L3 Proxy -> Part 3, validating admin access

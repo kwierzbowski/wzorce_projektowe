@@ -15,5 +15,8 @@ public interface IRoomService_Query {
     boolean isRoomAvailableIgnoringReservation(RoomAvailableIgnoringReservationDTO roomAvailableIgnoringReservationDTO);
     Room getRoomById(Long roomId, String token);
     void printAllRoom();
+    //###   start L10, RoomFilter  (part 3)
+    List<Room> getRoomsFilteredByHourlyRate(double minRate);
+    //###   start L10, RoomFilter  (part 3)
 }
 //###   end L8 Segregacja interfejsów

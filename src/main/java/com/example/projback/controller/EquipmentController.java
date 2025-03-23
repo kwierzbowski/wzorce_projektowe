@@ -92,11 +92,11 @@ public class EquipmentController {
 //        return "mediator";
     }
 
-    //###   start L10, EquipmentFilter (part 2)
+    //###   start L10, EquipmentFilter (part 3)
     @GetMapping("/filteredByPrice")
     public List<Equipment> getFilteredEquipment(@RequestParam double minPrice) {
         return equipmentServiceProxy.getEquipmentFilteredByPrice(minPrice);
     }
-    //###   end L10, EquipmentFilter (part 2)
+    //###   end L10, EquipmentFilter (part 3)
 }
 

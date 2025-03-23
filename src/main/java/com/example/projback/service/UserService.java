@@ -1,8 +1,10 @@
 package com.example.projback.service;
 
+import com.example.projback.entity.Role;
 import com.example.projback.entity.User;
 import com.example.projback.wzorce.L1.builder.UserBuilder;
 import com.example.projback.repository.UserRepository;
+import com.example.projback.wzorce.L10.UserFilter;
 import com.example.projback.wzorce.L2.Bridge.AbstractClasses.UserServiceBridge;
 import com.example.projback.wzorce.L2.Bridge.UserValidator;
 import com.example.projback.wzorce.L5.Command.Command;
@@ -11,7 +13,9 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 //###   start L2 Bridge -> UserService -> Usage
 @Service
@@ -66,4 +70,15 @@ public class UserService extends UserServiceBridge {
     public Optional<User> findByUsername(String username) {
         return userRepository.findByUsername(username);
     }
+
+    //###   start L10, UserFilter (part 2)
+    public List<User> getUsersByRole(Role role) {
+        UserFilter roleFilter = user -> user.getRole() == role;
+
+        return userRepository.findAll()
+                .stream()
+                .filter(roleFilter::test)
+                .collect(Collectors.toList());
+    }
+    //###   end L10, UserFilter (part 2)
 }

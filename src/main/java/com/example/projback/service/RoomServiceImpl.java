@@ -6,6 +6,7 @@ import com.example.projback.entity.*;
 import com.example.projback.repository.ReservationRepository;
 import com.example.projback.repository.RoomRepository;
 import com.example.projback.wzorce.L1.builder.RoomBuilder;
+import com.example.projback.wzorce.L10.RoomFilter;
 import com.example.projback.wzorce.L2.Adapter.AdapterInterface;
 import com.example.projback.wzorce.L2.Adapter.RoomAdapter;
 import com.example.projback.wzorce.L5.Iterator.Iterator;
@@ -306,4 +307,15 @@ public class RoomServiceImpl extends AbstractRoomService_Creating implements IRo
         return cloned;
     }
     //###   end L1 Prototype -> Part 3 -> Usage
+
+    //###   start L10, RoomFilter  (part 2)
+    public List<Room> getRoomsFilteredByHourlyRate(double minRate) {
+        RoomFilter filter = room -> room.getPricePerHour() >= minRate;
+
+        return roomRepository.findAll().stream()
+                .filter(filter::test)
+                .toList();
+    }
+    //###   end L10, RoomFilter  (part 2)
+
 }
