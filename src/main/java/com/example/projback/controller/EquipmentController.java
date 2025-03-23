@@ -3,6 +3,7 @@ package com.example.projback.controller;
 import com.example.projback.dto.MakeReservationDTO;
 import com.example.projback.entity.Equipment;
 //import com.example.projback.wzorce.L8.OdwracanieZaleznosci.IEquipmentService;
+import com.example.projback.wzorce.L10.EquipmentFilter;
 import com.example.projback.wzorce.L3.Proxy.EquipmentServiceProxy;
 import com.example.projback.wzorce.L8.OdwracanieZaleznosci.SegragacjaInterfejsow.Equipment.IEquipmentService_Query;
 import com.example.projback.wzorce.L8.OdwracanieZaleznosci.SegragacjaInterfejsow.Equipment.IEquipmentService_Creating;
@@ -12,6 +13,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/api/equipment")
@@ -89,5 +91,12 @@ public class EquipmentController {
 //        equipmentCreationService.createEquipmentByMediator(equipment, token);
 //        return "mediator";
     }
+
+    //###   start L10, EquipmentFilter (part 2)
+    @GetMapping("/filteredByPrice")
+    public List<Equipment> getFilteredEquipment(@RequestParam double minPrice) {
+        return equipmentServiceProxy.getEquipmentFilteredByPrice(minPrice);
+    }
+    //###   end L10, EquipmentFilter (part 2)
 }
 
