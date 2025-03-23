@@ -10,7 +10,7 @@
   - [ ] 2. dostosuj długości metod w programie, żeby nie miały więcej niż 20 linii - 3 pkt.
   - [ ] 3. dostosuj funkcje tak by spełniały tylko jedną rolę - 3 pkt.
   - [ ] 4. dostosuj funkcje tak by były tylko na jednym poziomie abstrakcji, kolejno wywoływane funkcje coraz bardziej szczegółowe (top to botom) - 3 pkt.
-  - [ ] 5. dostosuj funkcje tak, by przyjmowały maksymalnie 3 argumenty - 3 pkt.
+  - [X] 5. dostosuj funkcje tak, by przyjmowały maksymalnie 3 argumenty - 3 pkt.
   - [X] 6. dodaj zwracanie wyjątków zamiast kodów błędów (3 wystąpienia) - 3 pkt.
   - [ ] 7. dostosuj kod tak, by się nie powtarzał - 1 pkt.
   - [X] 8. wyeliminuj magiczne liczby - 1 pkt.
@@ -19,8 +19,8 @@
   - [ ] 1. utwórz 3 interfejsy funkcyjne, wykonaj ich implementacje i napisz kod używający instancji tych interfejsów poprzez zastosowanie wyrażenia lambda - 6 pkt.
   - [ ] 2. pokaż na przykładzie wykorzystanie programowania funkcyjnego w strumieniowym przetwarzaniu 3 kolekcji - 3 pkt.
      
-- [ ] **Tydzień 11** Zastosuj zasady (6 pkt.):
-  - [ ] 1. użyj w programie AspectJ do wykonania 3 aspektów - 6 pkt.
+- [X] **Tydzień 11** Zastosuj zasady (6 pkt.):
+  - [X] 1. użyj w programie AspectJ do wykonania 3 aspektów - 6 pkt.
      
 - [ ] **Tydzień 12** Zastosuj zasady (5 pkt.):
   - [ ] 1. utwórz klasę, która ma około 100 linii kodu, miesza odpowiedzialności, stosuje niewłaściwe nazwy, długie metody, dużo komentarzy, metody maja wiele argumentów
