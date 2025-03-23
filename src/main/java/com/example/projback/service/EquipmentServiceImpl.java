@@ -82,6 +82,7 @@ public class EquipmentServiceImpl extends AbstractEquipmentService_Creating impl
         return equipmentList;
     }
 
+    //###   start L9 c,d , Part 3
     @Override
     public Equipment saveEquipment(Equipment equipment, String token) {
         String username = extractUsernameFromToken(token);
@@ -94,6 +95,7 @@ public class EquipmentServiceImpl extends AbstractEquipmentService_Creating impl
         Equipment newEquipment = buildNewEquipment(equipment);
         return executeCreateEquipmentCommand(newEquipment);
     }
+    //###   end L9 c,d , Part 3
 
     //Method that saves equipment based on sent data about equipment
 //    @Override

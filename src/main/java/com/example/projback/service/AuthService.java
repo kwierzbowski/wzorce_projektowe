@@ -45,6 +45,7 @@ public class AuthService implements UserDetailsService, AuthenticationProviderIn
     }
 
 
+    //###   start L9 c,d , Part 2
     @Override
     public void registerUser(User user) {
         if (isUsernameExist(user.getUsername())) {
@@ -61,5 +62,6 @@ public class AuthService implements UserDetailsService, AuthenticationProviderIn
     public boolean isUsernameExist(String username) {
         return userRepository.findByUsername(username).isPresent();
     }
+    //###   end L9 c,d , Part 2
 }
 //###   end L7 Open-Closed Principle -> Part 2

@@ -5,6 +5,7 @@ import lombok.Data;
 
 import java.util.Date;
 
+//###   start L9 e, DTO
 @Data
 public class FilterReservationDTO {
     private Long userId = null;
@@ -13,3 +14,4 @@ public class FilterReservationDTO {
     private Date endDate = null;
     private String token;
 }
+//###   end L9 e, DTO

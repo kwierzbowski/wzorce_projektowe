@@ -159,6 +159,7 @@ public class RoomServiceImpl extends AbstractRoomService_Creating implements IRo
         return room.getOptionalEquipment().containsAll(equipment);
     }
 
+    //###   start L9 e, Part 3
     @Override
     public boolean isRoomAvailableIgnoringReservation(RoomAvailableIgnoringReservationDTO roomAvailableIgnoringReservationDTO) {
         if (roomAvailableIgnoringReservationDTO.getStartTime().after(roomAvailableIgnoringReservationDTO.getEndTime())) {
@@ -172,6 +173,7 @@ public class RoomServiceImpl extends AbstractRoomService_Creating implements IRo
         return conflictingReservations.stream()
                 .noneMatch(reservation -> !reservation.getId().equals(roomAvailableIgnoringReservationDTO.getReservationIdToIgnore()));
     }
+    //###   end L9 e, Part 3
 
     @Override
     public Room getRoomById(Long roomId, String token) {
