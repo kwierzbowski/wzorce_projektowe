@@ -1,10 +1,7 @@
 package com.example.projback.service;
 
 import com.example.projback.config.JwtUtil;
-import com.example.projback.dto.FilterReservationDTO;
-import com.example.projback.dto.MakeReservationDTO;
-import com.example.projback.dto.UpdateReservationDTO;
-import com.example.projback.dto.UpdateReservationEmployeeDTO;
+import com.example.projback.dto.*;
 import com.example.projback.entity.*;
 import com.example.projback.repository.ReservationRepository;
 import com.example.projback.wzorce.L1.builder.ReservationBuilder;
@@ -228,11 +225,11 @@ public class ReservationServiceImpl extends AbstractReservationService_Creating 
     }
 
     @Override
-    public void updateReservation(Long reservationId, UpdateReservationDTO updateReservation, String token) {
+    public void updateReservation(UpdateReservationRequestDTO updateReservationRequest) {
 
-        Reservation reservation = validateReservation(token, reservationId);
+        Reservation reservation = validateReservation(updateReservationRequest.getToken(), updateReservationRequest.getReservationId());
 
-        updateReservationFields(reservation, updateReservation);
+        updateReservationFields(reservation, updateReservationRequest.getUpdateReservation());
         //###   start L6 STATE
         PendingState pendingState = new PendingState();
         ApprovedState approvedState = new ApprovedState();

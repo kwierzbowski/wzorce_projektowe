@@ -1,9 +1,6 @@
 package com.example.projback.wzorce.L3.Facade;
 
-import com.example.projback.dto.FilterReservationDTO;
-import com.example.projback.dto.MakeReservationDTO;
-import com.example.projback.dto.UpdateReservationDTO;
-import com.example.projback.dto.UpdateReservationEmployeeDTO;
+import com.example.projback.dto.*;
 import com.example.projback.entity.Equipment;
 import com.example.projback.entity.Reservation;
 import com.example.projback.entity.ReservationStatus;
@@ -34,8 +31,8 @@ public class ReservationFacade {
         return ResponseEntity.ok("Reservation deleted");
     }
 
-    public ResponseEntity<String> updateReservation(Long reservationId, UpdateReservationDTO updateReservation, String token) {
-        reservationServiceProxy.updateReservation(reservationId, updateReservation, token);
+    public ResponseEntity<String> updateReservation(UpdateReservationRequestDTO updateReservation) {
+        reservationServiceProxy.updateReservation(updateReservation);
         return ResponseEntity.ok("Reservation updated");
     }
 

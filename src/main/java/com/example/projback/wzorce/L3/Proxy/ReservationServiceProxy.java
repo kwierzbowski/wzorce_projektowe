@@ -1,10 +1,7 @@
 package com.example.projback.wzorce.L3.Proxy;
 
 import com.example.projback.config.JwtUtil;
-import com.example.projback.dto.FilterReservationDTO;
-import com.example.projback.dto.MakeReservationDTO;
-import com.example.projback.dto.UpdateReservationDTO;
-import com.example.projback.dto.UpdateReservationEmployeeDTO;
+import com.example.projback.dto.*;
 import com.example.projback.entity.Reservation;
 import com.example.projback.entity.ReservationStatus;
 import com.example.projback.entity.User;
@@ -71,10 +68,10 @@ public class ReservationServiceProxy implements IReservationService_Query, IRese
     }
 
     @Override
-    public void updateReservation(Long reservationId, UpdateReservationDTO updateReservation, String token) {
-        validateUserAccessToReservation(reservationId, token);
-        reservationServiceManipulating.updateReservation(reservationId, updateReservation, token);
-        cache.remove(reservationId);
+    public void updateReservation(UpdateReservationRequestDTO updateReservation) {
+        validateUserAccessToReservation(updateReservation.getReservationId(), updateReservation.getToken());
+        reservationServiceManipulating.updateReservation(updateReservation);
+        cache.remove(updateReservation.getReservationId());
     }
 
     @Override

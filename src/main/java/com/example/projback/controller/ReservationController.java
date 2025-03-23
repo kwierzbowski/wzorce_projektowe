@@ -1,9 +1,6 @@
 package com.example.projback.controller;
 
-import com.example.projback.dto.FilterReservationDTO;
-import com.example.projback.dto.MakeReservationDTO;
-import com.example.projback.dto.UpdateReservationDTO;
-import com.example.projback.dto.UpdateReservationEmployeeDTO;
+import com.example.projback.dto.*;
 import com.example.projback.entity.*;
 //import com.example.projback.wzorce.L8.OdwracanieZaleznosci.IReservationService;
 import com.example.projback.wzorce.L3.Facade.ReservationFacade;
@@ -49,13 +46,16 @@ ReservationController {
         return reservationFacade.deleteReservation(reservationId, token);
     }
 
+    //###   start L9 e -> part 3, 3 -> 1
     @PutMapping("/customer/update/{reservationId}")
     public ResponseEntity<String> updateReservation(
             @PathVariable Long reservationId,
             @RequestBody UpdateReservationDTO updateReservation,
             @RequestHeader("Authorization") String token) {
-        return reservationFacade.updateReservation(reservationId, updateReservation, token);
+        UpdateReservationRequestDTO updateReservationRequestDTO = new UpdateReservationRequestDTO(reservationId, updateReservation, token);
+        return reservationFacade.updateReservation(updateReservationRequestDTO);
     }
+    //###   end L9 e -> part 3, 3 -> 1
 
     @GetMapping("/customer/get/{id}")
     public ResponseEntity<?> getCustomerReservationById(@PathVariable Long id, @RequestHeader("Authorization") String token) {
