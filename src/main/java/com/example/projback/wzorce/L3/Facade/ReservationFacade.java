@@ -1,5 +1,6 @@
 package com.example.projback.wzorce.L3.Facade;
 
+import com.example.projback.dto.FilterReservationDTO;
 import com.example.projback.dto.MakeReservationDTO;
 import com.example.projback.dto.UpdateReservationDTO;
 import com.example.projback.dto.UpdateReservationEmployeeDTO;
@@ -71,8 +72,11 @@ public class ReservationFacade {
         reservationServiceProxy.createReservationByMediator(reservation, token);
     }
 
-    public List<Reservation> getFilteredReservations(Long userId, ReservationStatus status, Date startDate, Date endDate) {
-        return reservationServiceProxy.getFilteredReservations(userId, status, startDate, endDate);
+    public List<Reservation> getFilteredReservations(FilterReservationDTO filterReservationDTO) {
+        return reservationServiceProxy.getFilteredReservations(filterReservationDTO);
     }
+//    public List<Reservation> getFilteredReservations(Long userId, ReservationStatus status, Date startDate, Date endDate) {
+//        return reservationServiceProxy.getFilteredReservations(userId, status, startDate, endDate);
+//    }
 }
 //###   end L3 Facade -> Part 2

@@ -1,6 +1,7 @@
 package com.example.projback.wzorce.L3.Proxy;
 
 import com.example.projback.config.JwtUtil;
+import com.example.projback.dto.FilterReservationDTO;
 import com.example.projback.dto.MakeReservationDTO;
 import com.example.projback.dto.UpdateReservationDTO;
 import com.example.projback.dto.UpdateReservationEmployeeDTO;
@@ -108,11 +109,17 @@ public class ReservationServiceProxy implements IReservationService_Query, IRese
         return cache.computeIfAbsent(reservationId, id -> reservationServiceQuery.getReservationById(id, token));
     }
 
+
     @Override
-    public List<Reservation> getFilteredReservations(Long userId, ReservationStatus status, Date startDate, Date endDate) {
-        return reservationServiceQuery.getFilteredReservations(userId, status, startDate, endDate);
+    public List<Reservation> getFilteredReservations(FilterReservationDTO filterReservationDTO) {
+        return reservationServiceQuery.getFilteredReservations(filterReservationDTO);
     }
 
+//    @Override
+//    public List<Reservation> getFilteredReservations(Long userId, ReservationStatus status, Date startDate, Date endDate) {
+//        return reservationServiceQuery.getFilteredReservations(userId, status, startDate, endDate);
+//    }
+//    filterReservationDTO
 
     @Override
     public void printAllReservations() {

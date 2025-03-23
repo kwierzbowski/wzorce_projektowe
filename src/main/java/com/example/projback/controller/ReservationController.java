@@ -1,5 +1,6 @@
 package com.example.projback.controller;
 
+import com.example.projback.dto.FilterReservationDTO;
 import com.example.projback.dto.MakeReservationDTO;
 import com.example.projback.dto.UpdateReservationDTO;
 import com.example.projback.dto.UpdateReservationEmployeeDTO;
@@ -102,8 +103,15 @@ ReservationController {
             @RequestHeader("Authorization") String token) {
 //        reservationFacade.createReservationByMediator(reservation, token);
         try {
+            FilterReservationDTO filterReservationDTO = new FilterReservationDTO();
+            if (userId != null) {filterReservationDTO.setUserId(userId);}
+            if (status != null) {filterReservationDTO.setStatus(status);}
+            if (startDate != null) {filterReservationDTO.setStartDate(startDate);}
+            if (endDate != null) {filterReservationDTO.setEndDate(endDate);}
+            filterReservationDTO.setToken(token);
 //            List<Reservation> reservations = reservationServiceQuery.getFilteredReservations(userId, status, startDate, endDate);
-            List<Reservation> reservations = reservationFacade.getFilteredReservations(userId, status, startDate, endDate);
+//            List<Reservation> reservations = reservationFacade.getFilteredReservations(userId, status, startDate, endDate);
+            List<Reservation> reservations = reservationFacade.getFilteredReservations(filterReservationDTO);
             return ResponseEntity.ok(reservations);
         } catch (RuntimeException e) {
             return ResponseEntity.status(HttpStatus.FORBIDDEN).body(null);

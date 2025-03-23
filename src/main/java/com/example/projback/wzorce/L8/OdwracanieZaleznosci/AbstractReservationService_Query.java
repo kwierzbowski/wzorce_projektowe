@@ -1,6 +1,7 @@
 package com.example.projback.wzorce.L8.OdwracanieZaleznosci;
 
 import com.example.projback.config.JwtUtil;
+import com.example.projback.dto.FilterReservationDTO;
 import com.example.projback.dto.MakeReservationDTO;
 import com.example.projback.entity.Reservation;
 import com.example.projback.entity.ReservationStatus;
@@ -36,7 +37,7 @@ public abstract class AbstractReservationService_Query implements IReservationSe
 
     public abstract List<Reservation> getReservationsByRoomId(Long roomId, String token);
 
-    public abstract List<Reservation> getFilteredReservations(Long userId, ReservationStatus status, Date startDate, Date endDate);
+    public abstract List<Reservation> getFilteredReservations(FilterReservationDTO filterReservationDTO);
 
     public abstract void printAllReservations();
 }

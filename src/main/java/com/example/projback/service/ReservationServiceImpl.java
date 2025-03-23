@@ -1,6 +1,7 @@
 package com.example.projback.service;
 
 import com.example.projback.config.JwtUtil;
+import com.example.projback.dto.FilterReservationDTO;
 import com.example.projback.dto.MakeReservationDTO;
 import com.example.projback.dto.UpdateReservationDTO;
 import com.example.projback.dto.UpdateReservationEmployeeDTO;
@@ -376,15 +377,15 @@ public class ReservationServiceImpl extends AbstractReservationService_Creating 
     }
 
     @Override
-    public List<Reservation> getFilteredReservations(Long userId, ReservationStatus status, Date startDate, Date endDate) {
+    public List<Reservation> getFilteredReservations(FilterReservationDTO filterReservationDTO) {
 
         //###   start L5 Interpreter -> usage
         String mode = " AND ";
 
         StringBuilder queryBuilder = new StringBuilder();
-        if (status != null) queryBuilder.append("status=").append(status).append(mode);
-        if (userId != null) queryBuilder.append("userId=").append(userId).append(mode);
-        if (startDate != null && endDate != null) queryBuilder.append("date=").append(startDate).append(",").append(endDate).append(mode);
+        if (filterReservationDTO.getStatus() != null) queryBuilder.append("status=").append(filterReservationDTO.getStatus()).append(mode);
+        if (filterReservationDTO.getUserId() != null) queryBuilder.append("userId=").append(filterReservationDTO.getUserId()).append(mode);
+        if (filterReservationDTO.getStartDate() != null && filterReservationDTO.getEndDate() != null) queryBuilder.append("date=").append(filterReservationDTO.getStartDate()).append(",").append(filterReservationDTO.getEndDate()).append(mode);
 
 
         String query = queryBuilder.toString().replaceAll(" AND $", "");

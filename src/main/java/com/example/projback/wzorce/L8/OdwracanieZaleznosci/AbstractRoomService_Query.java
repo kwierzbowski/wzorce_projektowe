@@ -1,6 +1,7 @@
 package com.example.projback.wzorce.L8.OdwracanieZaleznosci;
 
 import com.example.projback.config.JwtUtil;
+import com.example.projback.dto.RoomAvailableIgnoringReservationDTO;
 import com.example.projback.entity.Room;
 import com.example.projback.repository.RoomRepository;
 import com.example.projback.service.UserService;
@@ -32,7 +33,7 @@ public abstract class AbstractRoomService_Query implements IRoomService_Query {
 
     public abstract boolean isEquipmentAvailable(Long roomId, List<Long> equipment);
 
-    public abstract boolean isRoomAvailableIgnoringReservation(Long roomId, Date startTime, Date endTime, Long reservationIdToIgnore);
+    public abstract boolean isRoomAvailableIgnoringReservation(RoomAvailableIgnoringReservationDTO roomAvailableIgnoringReservationDTO);
 
     public abstract Room getRoomById(Long roomId, String token);
 
