@@ -65,8 +65,7 @@ public class RoomServiceImpl extends AbstractRoomService_Creating implements IRo
     }
     //###   end L5 MEDIATOR -> field
 
-    @Override
-    public Room createRoom(Room room, String token) {
+    private User userExtract(String token){
         String username = jwtUtil.extractUsername(token.substring(7));
 
         User user = userService.findByUsername(username)
@@ -75,7 +74,20 @@ public class RoomServiceImpl extends AbstractRoomService_Creating implements IRo
         if (jwtUtil.isTokenExpired(token.substring(7))) {
             throw new RuntimeException("Token się przedawnił");
         }
+        return user;
+    }
 
+    @Override
+    public Room createRoom(Room room, String token) {
+//        String username = jwtUtil.extractUsername(token.substring(7));
+//
+//        User user = userService.findByUsername(username)
+//                .orElseThrow(() -> new RuntimeException("User not found"));
+//
+//        if (jwtUtil.isTokenExpired(token.substring(7))) {
+//            throw new RuntimeException("Token się przedawnił");
+//        }
+        User user = userExtract(token);
         if (user.getRole() != Role.EMPLOYEE) {
             throw new RuntimeException("You are not authorized to create rooms");
         }
@@ -187,14 +199,15 @@ public class RoomServiceImpl extends AbstractRoomService_Creating implements IRo
 
     @Override
     public String deleteRoomById(Long roomId, String token) {
-        String username = jwtUtil.extractUsername(token.substring(7));
-
-        User user = userService.findByUsername(username)
-                .orElseThrow(() -> new RuntimeException("User not found"));
-
-        if (jwtUtil.isTokenExpired(token.substring(7))) {
-            throw new RuntimeException("Token się przedawnił.");
-        }
+//        String username = jwtUtil.extractUsername(token.substring(7));
+//
+//        User user = userService.findByUsername(username)
+//                .orElseThrow(() -> new RuntimeException("User not found"));
+//
+//        if (jwtUtil.isTokenExpired(token.substring(7))) {
+//            throw new RuntimeException("Token się przedawnił.");
+//        }
+        User user = userExtract(token);
 
         if (user.getRole() != Role.EMPLOYEE) {
             throw new RuntimeException("You are not authorized to delete rooms");
@@ -209,14 +222,14 @@ public class RoomServiceImpl extends AbstractRoomService_Creating implements IRo
 
     @Override
     public Room updateRoom(Room room, String token, Long roomId) {
-        String username = jwtUtil.extractUsername(token.substring(7));
-        User user = userService.findByUsername(username)
-                .orElseThrow(() -> new RuntimeException("User not found"));
-
-        if (jwtUtil.isTokenExpired(token.substring(7))) {
-            throw new RuntimeException("Token się przedawnił.");
-        }
-
+//        String username = jwtUtil.extractUsername(token.substring(7));
+//        User user = userService.findByUsername(username)
+//                .orElseThrow(() -> new RuntimeException("User not found"));
+//
+//        if (jwtUtil.isTokenExpired(token.substring(7))) {
+//            throw new RuntimeException("Token się przedawnił.");
+//        }
+        User user = userExtract(token);
         if (user.getRole() != Role.EMPLOYEE) {
             throw new RuntimeException("You are not authorized to delete rooms");
         }

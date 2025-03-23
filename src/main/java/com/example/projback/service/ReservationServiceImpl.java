@@ -110,6 +110,17 @@ public class ReservationServiceImpl extends AbstractReservationService_Creating 
     private StandardPricingVisitor standardPricingVisitor;
     //###   end L6 VISITOR
 
+    private User userExtract(String token){
+        String username = jwtUtil.extractUsername(token.substring(7));
+        User user = userService.findByUsername(username)
+                .orElseThrow(() -> new RuntimeException("User not found"));
+
+        if (jwtUtil.isTokenExpired(token.substring(7))) {
+            throw new RuntimeException("Token is expired");
+        }
+        return user;
+    }
+
     @Override
     public void createReservation(MakeReservationDTO reservation, String token) {
         //###   start L2 Bridge -> Reservation -> Part 4
@@ -118,13 +129,14 @@ public class ReservationServiceImpl extends AbstractReservationService_Creating 
         }
         //###   end L2 Bridge -> Reservation -> Part 4
 
-        String username = jwtUtil.extractUsername(token.substring(7));
-        User user = userService.findByUsername(username)
-                .orElseThrow(() -> new RuntimeException("User not found"));
-
-        if (jwtUtil.isTokenExpired(token.substring(7))) {
-            throw new RuntimeException("Token is expired");
-        }
+        User user = userExtract(token);
+//        String username = jwtUtil.extractUsername(token.substring(7));
+//        User user = userService.findByUsername(username)
+//                .orElseThrow(() -> new RuntimeException("User not found"));
+//
+//        if (jwtUtil.isTokenExpired(token.substring(7))) {
+//            throw new RuntimeException("Token is expired");
+//        }
 
         Room room = roomService_Query.findRoomById(reservation.getRoom());
 //        boolean available = roomService.findAvailableRooms(reservation.getStartTime(), reservation.getEndTime()).contains(room);
@@ -183,13 +195,14 @@ public class ReservationServiceImpl extends AbstractReservationService_Creating 
 
     @Override
     public Reservation validateReservation(String token, Long reservationId) {
-        String username = jwtUtil.extractUsername(token.substring(7));
-        User user = userService.findByUsername(username)
-                .orElseThrow(() -> new RuntimeException("User not found"));
-
-        if (jwtUtil.isTokenExpired(token.substring(7))) {
-            throw new RuntimeException("Token is expired");
-        }
+        User user = userExtract(token);
+//        String username = jwtUtil.extractUsername(token.substring(7));
+//        User user = userService.findByUsername(username)
+//                .orElseThrow(() -> new RuntimeException("User not found"));
+//
+//        if (jwtUtil.isTokenExpired(token.substring(7))) {
+//            throw new RuntimeException("Token is expired");
+//        }
 
         Reservation reservation = reservationRepository.findById(reservationId)
                 .orElseThrow(() -> new RuntimeException("Reservation not found"));
@@ -236,17 +249,18 @@ public class ReservationServiceImpl extends AbstractReservationService_Creating 
 
     @Override
     public void updateReservationStatusAndPrice(Long reservationId, UpdateReservationEmployeeDTO updateReservation, String token) {
-        String username = jwtUtil.extractUsername(token.substring(7));
-        User user = userService.findByUsername(username)
-                .orElseThrow(() -> new RuntimeException("User not found"));
+        User user = userExtract(token);
+//        String username = jwtUtil.extractUsername(token.substring(7));
+//        User user = userService.findByUsername(username)
+//                .orElseThrow(() -> new RuntimeException("User not found"));
 
         if (!user.getRole().equals(Role.EMPLOYEE)) {
             throw new RuntimeException("You are not authorized to perform this action");
         }
 
-        if (jwtUtil.isTokenExpired(token.substring(7))) {
-            throw new RuntimeException("Token is expired");
-        }
+//        if (jwtUtil.isTokenExpired(token.substring(7))) {
+//            throw new RuntimeException("Token is expired");
+//        }
 
         Reservation reservation = reservationRepository.findById(reservationId)
                 .orElseThrow(() -> new RuntimeException("Reservation not found"));
@@ -271,18 +285,18 @@ public class ReservationServiceImpl extends AbstractReservationService_Creating 
 
     @Override
     public List<Reservation> getReservationsByStatusOrAll(ReservationStatus status, String token) {
-        String username = jwtUtil.extractUsername(token.substring(7));
-        User user = userService.findByUsername(username)
-                .orElseThrow(() -> new RuntimeException("User not found"));
+//        String username = jwtUtil.extractUsername(token.substring(7));
+//        User user = userService.findByUsername(username)
+//                .orElseThrow(() -> new RuntimeException("User not found"));
 
-
+        User user = userExtract(token);
         if (!user.getRole().equals(Role.EMPLOYEE)) {
             throw new RuntimeException("You are not authorized to view reservations");
         }
 
-        if (jwtUtil.isTokenExpired(token.substring(7))) {
-            throw new RuntimeException("Token is expired");
-        }
+//        if (jwtUtil.isTokenExpired(token.substring(7))) {
+//            throw new RuntimeException("Token is expired");
+//        }
 
         printAllReservations();
 
@@ -294,10 +308,10 @@ public class ReservationServiceImpl extends AbstractReservationService_Creating 
 
     @Override
     public List<Reservation> getReservationsByUser(String token) {
-        String username = jwtUtil.extractUsername(token.substring(7));
-        User user = userService.findByUsername(username)
-                .orElseThrow(() -> new RuntimeException("User not found"));
-
+//        String username = jwtUtil.extractUsername(token.substring(7));
+//        User user = userService.findByUsername(username)
+//                .orElseThrow(() -> new RuntimeException("User not found"));
+        User user = userExtract(token);
         return reservationRepository.findByUserId(user.getId());
     }
 
@@ -318,28 +332,30 @@ public class ReservationServiceImpl extends AbstractReservationService_Creating 
 
     @Override
     public Reservation getCustomerReservationById(Long reservationId, String token) {
-        if (jwtUtil.isTokenExpired(token.substring(7))) {
-            throw new RuntimeException("Token is expired");
-        }
-
-        String username = jwtUtil.extractUsername(token.substring(7));
-        User user = userService.findByUsername(username)
-                .orElseThrow(() -> new RuntimeException("User not found"));
-
-        return reservationRepository.findById(reservationId)
-                .filter(reservation -> reservation.getUserId().equals(user.getId()))
-                .orElseThrow(() -> new RuntimeException("Reservation not found or access denied"));
+//        if (jwtUtil.isTokenExpired(token.substring(7))) {
+//            throw new RuntimeException("Token is expired");
+//        }
+//
+//        String username = jwtUtil.extractUsername(token.substring(7));
+//        User user = userService.findByUsername(username)
+//                .orElseThrow(() -> new RuntimeException("User not found"));
+//
+//        return reservationRepository.findById(reservationId)
+//                .filter(reservation -> reservation.getUserId().equals(user.getId()))
+//                .orElseThrow(() -> new RuntimeException("Reservation not found or access denied"));
+        return getReservationById(reservationId, token);
     }
 
     @Override
     public Reservation getEmployeeReservationById(Long reservationId, String token) {
-        if (jwtUtil.isTokenExpired(token.substring(7))) {
-            throw new RuntimeException("Token is expired");
-        }
-
-        String username = jwtUtil.extractUsername(token.substring(7));
-        User user = userService.findByUsername(username)
-                .orElseThrow(() -> new RuntimeException("User not found"));
+//        if (jwtUtil.isTokenExpired(token.substring(7))) {
+//            throw new RuntimeException("Token is expired");
+//        }
+//
+//        String username = jwtUtil.extractUsername(token.substring(7));
+//        User user = userService.findByUsername(username)
+//                .orElseThrow(() -> new RuntimeException("User not found"));
+        User user = userExtract(token);
 
         if (!user.getRole().equals(Role.EMPLOYEE)) {
             throw new RuntimeException("Access denied. User is not an employee.");
@@ -351,25 +367,26 @@ public class ReservationServiceImpl extends AbstractReservationService_Creating 
 
     @Override
     public List<Reservation> getReservationsByRoomId(Long roomId, String token) {
-        if (jwtUtil.isTokenExpired(token.substring(7))) {
-            throw new RuntimeException("Token is expired");
-        }
-        String username = jwtUtil.extractUsername(token.substring(7));
-        User user = userService.findByUsername(username)
-                .orElseThrow(() -> new RuntimeException("User not found"));
-
+//        if (jwtUtil.isTokenExpired(token.substring(7))) {
+//            throw new RuntimeException("Token is expired");
+//        }
+//        String username = jwtUtil.extractUsername(token.substring(7));
+//        User user = userService.findByUsername(username)
+//                .orElseThrow(() -> new RuntimeException("User not found"));
+        User user = userExtract(token);
         return reservationRepository.findByRoomId(roomId);
 
     }
     @Override
     public Reservation getReservationById(Long reservationId, String token) {
-        if (jwtUtil.isTokenExpired(token.substring(7))) {
-            throw new RuntimeException("Token is expired");
-        }
-
-        String username = jwtUtil.extractUsername(token.substring(7));
-        User user = userService.findByUsername(username)
-                .orElseThrow(() -> new RuntimeException("User not found"));
+//        if (jwtUtil.isTokenExpired(token.substring(7))) {
+//            throw new RuntimeException("Token is expired");
+//        }
+//
+//        String username = jwtUtil.extractUsername(token.substring(7));
+//        User user = userService.findByUsername(username)
+//                .orElseThrow(() -> new RuntimeException("User not found"));
+        User user = userExtract(token);
 
         return reservationRepository.findById(reservationId)
                 .filter(reservation -> reservation.getUserId().equals(user.getId()))

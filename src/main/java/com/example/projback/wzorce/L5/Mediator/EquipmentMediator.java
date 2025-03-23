@@ -19,16 +19,28 @@ public class EquipmentMediator implements Mediator {
         this.equipmentRepository = equipmentRepository;
     }
 
+    private User extractUser(String token) {
+        String username = jwtUtil.extractUsername(token.substring(7));
+        User user = userService.findByUsername(username)
+                .orElseThrow(() -> new RuntimeException("User not found"));
+
+        if (jwtUtil.isTokenExpired(token.substring(7))) {
+            throw new RuntimeException("Token is expired");
+        }
+        return user;
+    }
+
     @Override
     public Room notify(Object sender, String action, String token) {
         try {
-            String username = jwtUtil.extractUsername(token.substring(7));
-            User user = userService.findByUsername(username)
-                    .orElseThrow(() -> new RuntimeException("User not found"));
-
-            if (jwtUtil.isTokenExpired(token.substring(7))) {
-                throw new RuntimeException("Token is expired");
-            }
+//            String username = jwtUtil.extractUsername(token.substring(7));
+//            User user = userService.findByUsername(username)
+//                    .orElseThrow(() -> new RuntimeException("User not found"));
+//
+//            if (jwtUtil.isTokenExpired(token.substring(7))) {
+//                throw new RuntimeException("Token is expired");
+//            }
+            User user = extractUser(token);
 
             switch (action) {
                 case "create":
