@@ -5,6 +5,7 @@ import com.example.projback.entity.Equipment;
 import com.example.projback.entity.Role;
 import com.example.projback.entity.User;
 import com.example.projback.repository.UserRepository;
+import com.example.projback.wzorce.L10.EquipmentFilter;
 import com.example.projback.wzorce.L8.OdwracanieZaleznosci.SegragacjaInterfejsow.Equipment.IEquipmentService_Creating;
 import com.example.projback.wzorce.L8.OdwracanieZaleznosci.SegragacjaInterfejsow.Equipment.IEquipmentService_Manipulating;
 import com.example.projback.wzorce.L8.OdwracanieZaleznosci.SegragacjaInterfejsow.Equipment.IEquipmentService_Query;
@@ -112,5 +113,16 @@ public class EquipmentServiceProxy implements IEquipmentService_Manipulating, IE
             throw new RuntimeException("Access denied: You are not an admin.");
         }
     }
+
+    //###   start L10, EquipmentFilter (part 3)
+    public List<Equipment> getEquipmentFilteredByPrice(double minPrice) {
+        EquipmentFilter priceFilter = eq -> eq.getPrice() > minPrice;
+        System.out.println("\nL10 | All equipment:");
+        return getAllEquipment().stream()
+                .filter(priceFilter::test)
+                .toList();
+    }
+    //###   end L10, EquipmentFilter (part 3)
+
 }
 //###   end L3 Proxy -> Part 3, validating admin access
