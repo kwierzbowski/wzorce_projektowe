@@ -5,11 +5,11 @@
 - [X] **Tydzień 6**
 - [X] **Tydzień 7**
 - [X] **Tydzień 8**
-- [ ] **Tydzień 9️** Zastosuj zasady (19 pkt.):
+- [X] **Tydzień 9️** Zastosuj zasady (19 pkt.):
   - [x] 1. znaczących (jasnych i zrozumiałych) nazw do klas, metod i zmiennych, znaczących w całym programie to samo (bez synonimów) - 2 pkt.
   - [x] 2. dostosuj długości metod w programie, żeby nie miały więcej niż 20 linii - 3 pkt.
-  - [ ] 3. dostosuj funkcje tak by spełniały tylko jedną rolę - 3 pkt.
-  - [ ] 4. dostosuj funkcje tak by były tylko na jednym poziomie abstrakcji, kolejno wywoływane funkcje coraz bardziej szczegółowe (top to botom) - 3 pkt.
+  - [X] 3. dostosuj funkcje tak by spełniały tylko jedną rolę - 3 pkt.
+  - [X] 4. dostosuj funkcje tak by były tylko na jednym poziomie abstrakcji, kolejno wywoływane funkcje coraz bardziej szczegółowe (top to botom) - 3 pkt.
   - [X] 5. dostosuj funkcje tak, by przyjmowały maksymalnie 3 argumenty - 3 pkt.
   - [X] 6. dodaj zwracanie wyjątków zamiast kodów błędów (3 wystąpienia) - 3 pkt.
   - [x] 7. dostosuj kod tak, by się nie powtarzał - 1 pkt.
