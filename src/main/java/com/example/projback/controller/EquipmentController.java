@@ -25,7 +25,6 @@ public class EquipmentController {
 
     @Autowired
     public EquipmentController(EquipmentServiceProxy equipmentServiceProxy) {
-
         this.equipmentServiceProxy = equipmentServiceProxy;
     }
 

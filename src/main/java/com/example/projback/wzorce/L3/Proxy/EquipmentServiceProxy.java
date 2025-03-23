@@ -52,7 +52,7 @@ public class EquipmentServiceProxy implements IEquipmentService_Manipulating, IE
         //###   start L6 Observer
         notificationSystem.notifyObservers("added", equipment);
         //###   end L6 Observer
-        return equipment;
+        return equipmentCreationService.saveEquipment(equipment, token);
     }
 
     @Override
