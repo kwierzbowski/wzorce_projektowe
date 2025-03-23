@@ -12,6 +12,7 @@ public class SummerPricingVisitor implements PricingVisitor {
 
     @Override
     public void visit(Reservation reservation) {
+
         // start L9, 8. (wyeliminuj magiczne liczby)
         //double newPrice = reservation.getEstimatedPrice() * 1.2;
         double newPrice = reservation.getEstimatedPrice() * SUMMER_PRICE_MULTIPLIER;

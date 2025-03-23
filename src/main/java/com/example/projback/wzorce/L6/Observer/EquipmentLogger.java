@@ -4,6 +4,22 @@ import com.example.projback.entity.Equipment;
 import org.springframework.stereotype.Component;
 
 //###   start L6 Observer
+
+//###   start L9, 1.  znaczących (jasnych i zrozumiałych) nazw do klas, metod i zmiennych, znaczących w całym programie to samo (bez synonimów)
+
+//@Component
+//public class ItemLogger implements ItemObserver {
+//
+//    @Override
+//    public void onItemChange(String eventType, Item item) {
+//        String message = (item == null)
+//                ? "Otrzymano powiadomienie: " + eventType + ", ale sprzęt jest NULL!"
+//                : "L6 | OBSERVER | Equipment event: " + eventType + " -> " + item;
+//
+//        System.out.println(message);
+//    }
+//}
+
 @Component
 public class EquipmentLogger implements EquipmentObserver {
 
@@ -16,4 +32,7 @@ public class EquipmentLogger implements EquipmentObserver {
         System.out.println(message);
     }
 }
+
+//###   end L9, 1.  znaczących (jasnych i zrozumiałych) nazw do klas, metod i zmiennych, znaczących w całym programie to samo (bez synonimów)
+
 //###   end L6 Observer
