@@ -4,7 +4,6 @@ import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
 import com.example.projback.config.JwtUtil;
-import com.example.projback.entity.User;
 import io.jsonwebtoken.ExpiredJwtException;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
@@ -59,7 +58,7 @@ class JwtUtilTest {
 
     @Test
     void testTokenIsExpired() throws InterruptedException {
-        // Tworzymy token, który już wygasł
+        // token, który już wygasł
         String expiredToken = Jwts.builder()
                 .setSubject(USERNAME)
                 .setIssuedAt(new Date(System.currentTimeMillis() - 1000 * 60 * 61)) // 61min temu
