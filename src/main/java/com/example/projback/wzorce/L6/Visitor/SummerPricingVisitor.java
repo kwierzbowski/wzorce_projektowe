@@ -3,7 +3,7 @@ package com.example.projback.wzorce.L6.Visitor;
 import com.example.projback.entity.Reservation;
 import org.springframework.stereotype.Component;
 
-//###   start L6 VISITOR
+//###   start L6 Visitor (part 3)
 @Component
 public class SummerPricingVisitor implements PricingVisitor {
     // start L9, 8. (part 3) (wyeliminuj magiczne liczby)
@@ -22,4 +22,4 @@ public class SummerPricingVisitor implements PricingVisitor {
         System.out.println("L6 | VISITOR | Sezon letni! Nowa cena: " + newPrice + " PLN");
     }
 }
-//###   end L6 VISITOR
+//###   end L6 Visitor (part 3)

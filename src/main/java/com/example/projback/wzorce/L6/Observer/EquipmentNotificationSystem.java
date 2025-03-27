@@ -6,7 +6,7 @@ import org.springframework.stereotype.Component;
 import java.util.ArrayList;
 import java.util.List;
 
-//###   start L6 Observer
+//###   start L6 Observer (part 3)
 
 //###   start L9, 1. (part 2) znaczących (jasnych i zrozumiałych) nazw do klas, metod i zmiennych, znaczących w całym programie to samo (bez synonimów)
 //@Component
@@ -40,4 +40,4 @@ public class EquipmentNotificationSystem {
 }
 //###   end L9, 1. (part 2) znaczących (jasnych i zrozumiałych) nazw do klas, metod i zmiennych, znaczących w całym programie to samo (bez synonimów)
 
-//###   end L6 Observer
+//###   end L6 Observer (part 3)

@@ -5,7 +5,7 @@ import org.springframework.stereotype.Component;
 import java.time.Duration;
 import java.time.Instant;
 
-//###   start L6 Template
+//###   start L6 Template (part 1)
 public abstract class CancellationTemplate {
 
 //###   start L9, 2. (part 1) dostosuj długości metod w programie, żeby nie miały więcej niż 20 linii
@@ -64,4 +64,4 @@ public abstract class CancellationTemplate {
         System.out.println("L6 | TEMPLATE | Zmiana statusu na CANCELED w bazie dla rezerwacji ID " + reservation.getId());
     }
 }
-//###   end L6 Template
+//###   end L6 Template (part 1)

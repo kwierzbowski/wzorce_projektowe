@@ -90,7 +90,7 @@ public class RoomController {
     public List<Room> getFilteredRooms(@RequestParam double minRate) {
         return roomServiceQuery.getRoomsFilteredByHourlyRate(minRate);
     }
-    //###   start L10, RoomFilter  (part 4)
+    //###   end L10, RoomFilter  (part 4)
 
 }
 //###   end L3 Facade -> Part 3 - adapting the code to use facade

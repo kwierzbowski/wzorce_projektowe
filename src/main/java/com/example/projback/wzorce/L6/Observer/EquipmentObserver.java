@@ -2,7 +2,7 @@ package com.example.projback.wzorce.L6.Observer;
 
 import com.example.projback.entity.Equipment;
 
-//###   start L6 Observer
+//###   start L6 Observer (part 1)
 
 //###   start L9, 1. (part 3) znaczących (jasnych i zrozumiałych) nazw do klas, metod i zmiennych, znaczących w całym programie to samo (bez synonimów)
 //public interface ItemObserver {
@@ -13,4 +13,4 @@ import com.example.projback.entity.Equipment;
 public interface EquipmentObserver {
     void onEquipmentChange(String eventType, Equipment equipment);
 }
-//###   end L6 Observer
+//###   end L6 Observer (part 1)

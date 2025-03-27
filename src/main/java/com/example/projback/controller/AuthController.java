@@ -6,8 +6,9 @@ import com.example.projback.dto.LoginResponseDTO;
 import com.example.projback.dto.ResponseDTO;
 import com.example.projback.entity.Role;
 import com.example.projback.entity.User;
+import com.example.projback.repository.UserRepository;
 import com.example.projback.service.UserService;
-import com.example.projback.wzorce.L10.UserFilter;
+import com.example.projback.wzorce.L12.StuffDoer;
 import com.example.projback.wzorce.L3.Facade.AuthFacade;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -26,12 +27,15 @@ public class AuthController {
     private final UserService userService;
     private final PasswordEncoder passwordEncoder;
     private final JwtUtil jwtUtil;
+    private final UserRepository userRepository;
 
-    public AuthController(AuthFacade authFacade, UserService userService, PasswordEncoder passwordEncoder, JwtUtil jwtUtil) {
+    public AuthController(AuthFacade authFacade, UserService userService, PasswordEncoder passwordEncoder, JwtUtil jwtUtil, UserRepository userRepository, StuffDoer stuffDoer) {
         this.authFacade = authFacade;
         this.userService = userService;
         this.passwordEncoder = passwordEncoder;
         this.jwtUtil = jwtUtil;
+        this.userRepository = userRepository;
+        this.stuffDoer = stuffDoer;
     }
 
     // Method to handle register request
@@ -82,7 +86,37 @@ public class AuthController {
     public ResponseEntity<List<User>> getUsersByRole(@RequestParam("role") Role role) {
         return ResponseEntity.ok(userService.getUsersByRole(role));
     }
-
     //###   end L10, UserFilter (part 3)
+
+
+    //###   start L12, 1.
+    private final StuffDoer stuffDoer;
+
+    @GetMapping("/user-report1")
+    public ResponseEntity<String> generateUserReport() {
+        stuffDoer.doAllTheThings(
+                "csv",                // typ raportu
+                true,                 // czy dołączyć datę
+                "output/report",      // ścieżka pliku
+                true,                 // czy nagłówki mają być dużymi literami
+                ";",                  // separator
+                "csv"                // rozszerzenie pliku
+        );
+
+        return ResponseEntity.ok("Raport został wygenerowany.");
+    }
+
+    //### end L12, 1.
+
+
+    //###   start L12, 2. (part 5)
+
+    @GetMapping("/user-report")
+    public ResponseEntity<byte[]> getUserReport(@RequestParam String format) {
+        return userService.generateUserReportResponse(format);
+    }
+
+    //###   end L12, 2. (part 5)
+
 }
 

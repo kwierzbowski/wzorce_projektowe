@@ -78,25 +78,25 @@ public class ReservationServiceImpl extends AbstractReservationService_Creating 
     @Autowired
     private final IRoomService_Query roomService_Query;
 
-    //###   start L6 STATE
+    //###   start L6 State
     private final ReservationState reservationState;
-    //###   end L6 STATE
+    //###   end L6 State
 
-    //###   start L6 STRATEGY
+    //###   start L6 Strategy
     private final PricingContext pricingContext;
     private final DailyPricingStrategy dailyPricingStrategy;
     private final HourlyPricingStrategy hourlyPricingStrategy;
-    //###   end L6 STRATEGY
+    //###   end L6 Strategy
 
-    //###   start L6 TEMPLATE
+    //###   start L6 Template
     @Autowired
     private FreeCancellation freeCancellation;
 
     @Autowired
     private PaidCancellation paidCancellation;
-    //###   end L6 TEMPLATE
+    //###   end L6 Template
 
-    //###   start L6 VISITOR
+    //###   start L6 Visitor
     @Autowired
     private SummerPricingVisitor summerPricingVisitor;
 
@@ -105,7 +105,7 @@ public class ReservationServiceImpl extends AbstractReservationService_Creating 
 
     @Autowired
     private StandardPricingVisitor standardPricingVisitor;
-    //###   end L6 VISITOR
+    //###   end L6 Visitor
 
     private User userExtract(String token){
         String username = jwtUtil.extractUsername(token.substring(7));
@@ -157,13 +157,13 @@ public class ReservationServiceImpl extends AbstractReservationService_Creating 
                 .setStatus(ReservationStatus.PENDING)
                 .build();
 
-        //###   start L6 STRATEGY
+        //###   start L6 Strategy
         applyPricingStrategy(newReservation, room);
-        //###   end L6 STRATEGY
+        //###   end L6 Strategy
 
-        //###   start L6 VISITOR
+        //###   start L6 Visitor (part 5)
         applySeasonalPricing(newReservation);
-        //###   end L6 VISITOR
+        //###   end L6 Visitor (part 5)
 
         //###   start L5 Command -> Reservation - usage
         Command createReservationCommand = new Reservation_Create_Command(newReservation, reservationRepository);
@@ -210,6 +210,7 @@ public class ReservationServiceImpl extends AbstractReservationService_Creating 
         return reservation;
     }
 
+    // ### start L6 Template (part 4)
     @Override
     public void deleteReservation(Long reservationId, String token) {
         Reservation reservation = validateReservation(token, reservationId);
@@ -223,6 +224,7 @@ public class ReservationServiceImpl extends AbstractReservationService_Creating 
         }
         reservationRepository.deleteById(reservationId);
     }
+    // ### end L6 Template (part 4)
 
     @Override
     public void updateReservation(UpdateReservationRequestDTO updateReservationRequest) {
@@ -230,7 +232,7 @@ public class ReservationServiceImpl extends AbstractReservationService_Creating 
         Reservation reservation = validateReservation(updateReservationRequest.getToken(), updateReservationRequest.getReservationId());
 
         updateReservationFields(reservation, updateReservationRequest.getUpdateReservation());
-        //###   start L6 STATE
+        //###   start L6 State (part 5)
         PendingState pendingState = new PendingState();
         ApprovedState approvedState = new ApprovedState();
         CanceledState canceledState = new CanceledState();
@@ -240,7 +242,7 @@ public class ReservationServiceImpl extends AbstractReservationService_Creating 
             case CANCELED -> canceledState.checkReservationState(reservation);
             default -> throw new IllegalStateException("Nieobsługiwany status rezerwacji: " + reservation.getStatus());
         }
-        //###   end L6 STATE
+        //###   end L6 State (part 5)
         reservationRepository.save(reservation);
     }
 
@@ -456,7 +458,7 @@ public class ReservationServiceImpl extends AbstractReservationService_Creating 
     }
     //###   end L1 Prototype -> Part 3 -> Usage
 
-    //###   start L6 STRATEGY
+    //###   start L6 Strategy (part 5)
     public void applyPricingStrategy(Reservation reservation, Room room) {
         long hours = Duration.between(reservation.getStartTime().toInstant(), reservation.getEndTime().toInstant()).toHours();
 
@@ -468,9 +470,9 @@ public class ReservationServiceImpl extends AbstractReservationService_Creating 
 
         pricingContext.executeStrategy(reservation, room);
     }
-    //###   end L6 STRATEGY
+    //###   end L6 Strategy (part 5)
 
-    //###   start L6 VISITOR
+    //###   start L6 Visitor (part 4)
     public void applySeasonalPricing(Reservation reservation) {
         LocalDate now = LocalDate.now();
         Month month = now.getMonth();
@@ -483,6 +485,6 @@ public class ReservationServiceImpl extends AbstractReservationService_Creating 
             reservation.accept(standardPricingVisitor);
         }
     }
-    //###   end L6 VISITOR
+    //###   end L6 Visitor (part 4)
 
 }

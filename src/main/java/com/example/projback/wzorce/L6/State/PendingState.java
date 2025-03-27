@@ -3,7 +3,7 @@ package com.example.projback.wzorce.L6.State;
 import com.example.projback.entity.Reservation;
 import org.springframework.stereotype.Component;
 
-//###   start L6 State
+//###   start L6 State (part 4)
 @Component
 public class PendingState implements ReservationState {
     @Override
@@ -11,5 +11,4 @@ public class PendingState implements ReservationState {
         System.out.println("L6 | STATE | Status jest dalej PENDING.");
     }
 }
-//###   end L6 STATE
-
+//###   end L6 State (part 4)

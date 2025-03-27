@@ -7,7 +7,7 @@ import java.time.Duration;
 import java.time.Instant;
 import java.util.Date;
 
-////###   start L6 Strategy
+////###   start L6 Strategy (part 3)
 ////###   start L9, 7. (part 1) dostosuj kod tak, by sie nie powtarzal
 
 //@Component
@@ -90,5 +90,5 @@ public class HourlyPricingStrategy extends PricingStrategy {
         return room.getPricePerHour();
     }
 }
-////###   end L6 Strategy
+////###   end L6  (part 3)
 ////###   end L9, 7. (part 1) dostosuj kod tak, by sie nie powtarzal

@@ -5,7 +5,7 @@ import org.springframework.stereotype.Component;
 import java.time.Duration;
 import java.time.Instant;
 
-//###   start L6 TEMPLATE
+//###   start L6 Template (part 3)
 @Component
 public class PaidCancellation extends CancellationTemplate {
     // start L9, 8. (part 2) (wyeliminuj magiczne liczby)
@@ -32,4 +32,4 @@ public class PaidCancellation extends CancellationTemplate {
         System.out.println("L6 | TEMPLATE | Użytkownik musi zapłacić opłatę za anulowanie: " + cancellationFee + " PLN.");
     }
 }
-//###   end L6 TEMPLATE
+//###   end L6 Template (part 3)

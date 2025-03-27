@@ -3,7 +3,7 @@ package com.example.projback.wzorce.L6.State;
 import com.example.projback.entity.Reservation;
 import org.springframework.stereotype.Component;
 
-//###   start L6 State
+//###   start L6 State (part 2)
 @Component
 public class ApprovedState implements ReservationState {
     @Override
@@ -12,5 +12,5 @@ public class ApprovedState implements ReservationState {
         System.out.println("L6 | STATE | Z uwagi na zmianę rezerwacji, zmieniono jej status z APPROVED na PENDING.");
     }
 }
-//###   end L6 State
+//###   end L6 State (part 2)
 

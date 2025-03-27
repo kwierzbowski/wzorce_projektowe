@@ -7,4 +7,4 @@ import com.example.projback.entity.Room;
 public interface RoomFilter {
     boolean test(Room room);
 }
-//###   start L10, RoomFilter  (part 1)
+//###   end L10, RoomFilter  (part 1)

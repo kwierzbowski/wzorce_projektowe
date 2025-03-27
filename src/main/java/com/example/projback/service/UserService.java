@@ -5,11 +5,14 @@ import com.example.projback.entity.User;
 import com.example.projback.wzorce.L1.builder.UserBuilder;
 import com.example.projback.repository.UserRepository;
 import com.example.projback.wzorce.L10.UserFilter;
+import com.example.projback.wzorce.L12.UserReportGenerator;
+import com.example.projback.wzorce.L12.UserReportTemplate;
 import com.example.projback.wzorce.L2.Bridge.AbstractClasses.UserServiceBridge;
 import com.example.projback.wzorce.L2.Bridge.UserValidator;
 import com.example.projback.wzorce.L5.Command.Command;
 import com.example.projback.wzorce.L5.Command.User_Create_Command;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -81,4 +84,26 @@ public class UserService extends UserServiceBridge {
                 .collect(Collectors.toList());
     }
     //###   end L10, UserFilter (part 2)
-}
+
+    //###   start L12, 2.
+    public List<User> getAllUsers() {
+        return userRepository.findAll();
+    }
+
+        public ResponseEntity<byte[]> generateUserReportResponse(String format) {
+            List<User> users = getAllUsers();
+            UserReportTemplate strategy = UserReportGenerator.getStrategy(format);
+            byte[] report = strategy.generateReport(users);
+
+            String contentType = format.equalsIgnoreCase("xlsx")
+                    ? "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+                    : "text/csv";
+
+            return ResponseEntity.ok()
+                    .header("Content-Disposition", "attachment; filename=users." + format)
+                    .header("Content-Type", contentType)
+                    .body(report);
+        }
+    }
+
+    //### end L12, 2.

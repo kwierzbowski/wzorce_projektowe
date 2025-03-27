@@ -6,7 +6,7 @@ import org.springframework.stereotype.Component;
 import java.time.Duration;
 
 ////###   start L9, 7. (part 2) dostosuj kod tak, by sie nie powtarzal
-////###   start L6 Strategy
+////###   start L6 Strategy (part 2)
 
 //@Component
 //public class HourlyPricingStrategy implements PricingStrategy {
@@ -57,5 +57,5 @@ public class DailyPricingStrategy extends PricingStrategy {
         return room.getPricePerDay();
     }
 }
-////###   end L6 Strategy
+////###   end L6 Strategy (part 2)
 ////###   end L9, 7. (part 2) dostosuj kod tak, by sie nie powtarzal

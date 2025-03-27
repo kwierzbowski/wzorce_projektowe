@@ -4,7 +4,7 @@ import com.example.projback.entity.Reservation;
 import com.example.projback.entity.Room;
 
 ////#####   start L9, 7. (part 3) dostosuj kod tak, by sie nie powtarzal
-////###   start L6 Strategy
+////###   start L6 Strategy (part 1)
 
 //public interface PricingStrategy {
 //    void applyPricing(Reservation reservation, Room room);
@@ -70,5 +70,5 @@ public abstract class PricingStrategy {
                 ", final_price = " + totalPrice);
     }
 }
-////###   end L6 Strategy
+////###   end L6 Strategy (part 1)
 ////###   end L9, 7. (part 3) dostosuj kod tak, by sie nie powtarzal
