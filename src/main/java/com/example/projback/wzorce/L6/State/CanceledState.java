@@ -3,7 +3,7 @@ package com.example.projback.wzorce.L6.State;
 import com.example.projback.entity.Reservation;
 import org.springframework.stereotype.Component;
 
-//###   start L6 State (part 3)
+//###   start L6 State
 @Component
 public class CanceledState implements ReservationState {
     @Override
@@ -15,4 +15,4 @@ public class CanceledState implements ReservationState {
 //###   end L9, 6. (part 3) dodaj zwracanie wyjątków zamiast kodów błędów (3 wystąpienia)
     }
 }
-//###   end L6 State (part 3)
+//###   end L6 State

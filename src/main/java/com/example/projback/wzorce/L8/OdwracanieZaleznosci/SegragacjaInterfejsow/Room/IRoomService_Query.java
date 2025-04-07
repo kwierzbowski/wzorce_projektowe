@@ -17,6 +17,6 @@ public interface IRoomService_Query {
     void printAllRoom();
     //###   start L10, RoomFilter  (part 3)
     List<Room> getRoomsFilteredByHourlyRate(double minRate);
-    //###   end L10, RoomFilter  (part 3)
+    //###   start L10, RoomFilter  (part 3)
 }
 //###   end L8 Segregacja interfejsów

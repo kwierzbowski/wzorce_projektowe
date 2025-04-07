@@ -50,18 +50,18 @@ public class EquipmentServiceProxy implements IEquipmentService_Manipulating, IE
     @Override
     public Equipment saveEquipment(Equipment equipment, String token) {
         validateAdminAccess(token);
-        //###   start L6 Observer (part 5)
+        //###   start L6 Observer
         notificationSystem.notifyObservers("added", equipment);
-        //###   end L6 Observer (part 5)
+        //###   end L6 Observer
         return equipmentCreationService.saveEquipment(equipment, token);
     }
 
     @Override
     public String deleteEquipment(Long equipmentId, String token) {
         validateAdminAccess(token);
-        //###   start L6 Observer (part 6)
+        //###   start L6 Observer
         notificationSystem.notifyObservers("deleted", getEquipmentById(equipmentId));
-        //###   end L6 Observer (part 6)
+        //###   end L6 Observer
         String message = equipmentModificationService.deleteEquipment(equipmentId, token);
         cache.remove(equipmentId);
         return message;
@@ -70,9 +70,9 @@ public class EquipmentServiceProxy implements IEquipmentService_Manipulating, IE
     @Override
     public Equipment updateEquipment(Equipment equipment, String token, long id) {
         validateAdminAccess(token);
-        //###   start L6 Observer (part 7)
+        //###   start L6 Observer
         notificationSystem.notifyObservers("updated", equipment);
-        //###   end L6 Observer (part 7)
+        //###   end L6 Observer
         Equipment eq = equipmentModificationService.updateEquipment(equipment, token, id);
         cache.remove(id);
         return eq;

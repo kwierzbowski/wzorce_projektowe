@@ -4,7 +4,7 @@ import com.example.projback.entity.Reservation;
 import com.example.projback.entity.Room;
 import org.springframework.stereotype.Component;
 
-////###   start L6 Strategy (part 4)
+////###   start L6 Strategy
 @Component
 public class PricingContext {
 
@@ -21,4 +21,4 @@ public class PricingContext {
         strategy.applyPricing(reservation, room);
     }
 }
-////###   end L6 Strategy (part 4)
+////###   end L6 Strategy

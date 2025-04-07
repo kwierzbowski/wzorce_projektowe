@@ -5,7 +5,7 @@ import org.springframework.stereotype.Component;
 import java.time.Duration;
 import java.time.Instant;
 
-//###   start L6 Template (part 2)
+//###   start L6 TEMPLATE
 @Component
 public class FreeCancellation extends CancellationTemplate {
 
@@ -24,4 +24,4 @@ public class FreeCancellation extends CancellationTemplate {
         System.out.println("L6 | TEMPLATE | Zwrot pełnej kwoty dla rezerwacji ID " + reservation.getId());
     }
 }
-//###   end L6 Template (part 2)
+//###   end L6 TEMPLATE

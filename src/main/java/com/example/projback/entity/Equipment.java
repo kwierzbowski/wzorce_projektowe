@@ -82,7 +82,7 @@ public class Equipment implements Cloneable, EquipmentComponent {
         //Equipment cloned = existing.clone();
     //###   end L1 Prototype -> Part 1
 
-    //###   start L6 Observer (part 4)
+    //###   start L6 Observer
     @Override
     public String toString() {
         return "Equipment{" +
