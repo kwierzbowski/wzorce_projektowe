@@ -1,15 +1,18 @@
 package com.example.projback.service;
 
 import com.example.projback.config.JwtUtil;
-import com.example.projback.dto.RoomAvailableIgnoringReservationDTO;
 import com.example.projback.entity.*;
+import com.example.projback.repository.EquipmentRepository;
 import com.example.projback.repository.ReservationRepository;
 import com.example.projback.repository.RoomRepository;
 import com.example.projback.wzorce.L1.builder.RoomBuilder;
 import com.example.projback.wzorce.L2.Adapter.AdapterInterface;
+import com.example.projback.wzorce.L2.Adapter.EquipmentAdapter;
 import com.example.projback.wzorce.L2.Adapter.RoomAdapter;
+import com.example.projback.wzorce.L2.Composite.EquipmentGroup;
 import com.example.projback.wzorce.L5.Iterator.Iterator;
 import com.example.projback.wzorce.L5.Iterator.RoomCollection;
+import com.example.projback.wzorce.L5.Mediator.EquipmentMediator;
 import com.example.projback.wzorce.L5.Mediator.RoomMediator;
 import com.example.projback.wzorce.L5.Memento.Caretaker;
 import com.example.projback.wzorce.L5.Memento.Memento;
@@ -160,17 +163,17 @@ public class RoomServiceImpl extends AbstractRoomService_Creating implements IRo
     }
 
     @Override
-    public boolean isRoomAvailableIgnoringReservation(RoomAvailableIgnoringReservationDTO roomAvailableIgnoringReservationDTO) {
-        if (roomAvailableIgnoringReservationDTO.getStartTime().after(roomAvailableIgnoringReservationDTO.getEndTime())) {
+    public boolean isRoomAvailableIgnoringReservation(Long roomId, Date startTime, Date endTime, Long reservationIdToIgnore) {
+        if (startTime.after(endTime)) {
             throw new IllegalArgumentException("Start time cannot be after end time");
         }
 
         List<Reservation> conflictingReservations = reservationRepository.findReservationsForRoom(
-                roomAvailableIgnoringReservationDTO.getRoomId(), roomAvailableIgnoringReservationDTO.getStartTime(), roomAvailableIgnoringReservationDTO.getEndTime());
+                roomId, startTime, endTime);
 
         // Ignorowanie rezerwacji o podanym ID
         return conflictingReservations.stream()
-                .noneMatch(reservation -> !reservation.getId().equals(roomAvailableIgnoringReservationDTO.getReservationIdToIgnore()));
+                .noneMatch(reservation -> !reservation.getId().equals(reservationIdToIgnore));
     }
 
     @Override

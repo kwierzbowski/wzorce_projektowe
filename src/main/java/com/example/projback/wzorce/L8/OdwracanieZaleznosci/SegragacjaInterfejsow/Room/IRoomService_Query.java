@@ -2,8 +2,6 @@ package com.example.projback.wzorce.L8.OdwracanieZaleznosci.SegragacjaInterfejso
 
 import java.util.Date;
 import java.util.List;
-
-import com.example.projback.dto.RoomAvailableIgnoringReservationDTO;
 import com.example.projback.entity.Room;
 
 //###   start L8 Segregacja interfejsów
@@ -12,7 +10,7 @@ public interface IRoomService_Query {
     List<Room> findAvailableRooms(Date startTime, Date endTime);
     Room findRoomById(Long id);
     boolean isEquipmentAvailable(Long roomId, List<Long> equipment);
-    boolean isRoomAvailableIgnoringReservation(RoomAvailableIgnoringReservationDTO roomAvailableIgnoringReservationDTO);
+    boolean isRoomAvailableIgnoringReservation(Long roomId, Date startTime, Date endTime, Long reservationIdToIgnore);
     Room getRoomById(Long roomId, String token);
     void printAllRoom();
 }

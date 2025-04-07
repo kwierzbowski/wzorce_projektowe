@@ -1,6 +1,5 @@
 package com.example.projback.wzorce.L8.OdwracanieZaleznosci.SegragacjaInterfejsow.Reservation;
 
-import com.example.projback.dto.FilterReservationDTO;
 import com.example.projback.entity.Reservation;
 import com.example.projback.entity.ReservationStatus;
 
@@ -17,7 +16,7 @@ public interface IReservationService_Query {
 
     Reservation getReservationById(Long reservationId, String token);
 
-    List<Reservation> getFilteredReservations(FilterReservationDTO filterReservationDTO);
+    List<Reservation> getFilteredReservations(Long userId, ReservationStatus status, Date startDate, Date endDate);
     void printAllReservations();
 }
 //###   end L8 Segregacja interfejsów
