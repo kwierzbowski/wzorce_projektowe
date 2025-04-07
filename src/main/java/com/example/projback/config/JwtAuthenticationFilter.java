@@ -36,7 +36,6 @@ public class JwtAuthenticationFilter extends JwtAuthenticationFilterBridge {
 //        this.authService = authService;
     }
 
-    //###   start L9 c,d -> part 1
     @Override
     protected void doFilterInternal(HttpServletRequest request,
                                     HttpServletResponse response,
@@ -91,7 +90,7 @@ public class JwtAuthenticationFilter extends JwtAuthenticationFilterBridge {
         authenticationToken.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
         SecurityContextHolder.getContext().setAuthentication(authenticationToken);
     }
-    //###   end L9 c,d -> part 1
+
 
 //    @Override
 //    protected void doFilterInternal(HttpServletRequest request,

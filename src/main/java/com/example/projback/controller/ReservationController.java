@@ -94,7 +94,6 @@ ReservationController {
         return reservationFacade.getEmployeeReservationById(id, token);
     }
 
-    //###   start L9 e -> part 1
     @GetMapping("/employee/filtered")
     public ResponseEntity<List<Reservation>> getFilteredReservations(
             @RequestParam(required = false) Long userId,
@@ -119,7 +118,6 @@ ReservationController {
         }
 
     }
-    //###   start L9 e -> part 1
 
     @PostMapping("/mediator")
     public void createWithMediator(@RequestBody MakeReservationDTO reservation, @RequestHeader("Authorization") String token) {

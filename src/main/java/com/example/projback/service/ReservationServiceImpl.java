@@ -376,7 +376,6 @@ public class ReservationServiceImpl extends AbstractReservationService_Creating 
                 .orElseThrow(() -> new RuntimeException("Reservation not found or access denied"));
     }
 
-    //###   start L9 e, Part2
     @Override
     public List<Reservation> getFilteredReservations(FilterReservationDTO filterReservationDTO) {
 
@@ -403,7 +402,6 @@ public class ReservationServiceImpl extends AbstractReservationService_Creating 
         return reservations;
         //###   end L5 Interpreter -> usage
     }
-    //###   start L9 e, Part2
 
     //###   start L5 MEMENTO -> Reservation -> Usage (Undo changes)
     @Override
