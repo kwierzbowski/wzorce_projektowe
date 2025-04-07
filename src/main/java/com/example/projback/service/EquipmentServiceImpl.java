@@ -82,86 +82,18 @@ public class EquipmentServiceImpl extends AbstractEquipmentService_Creating impl
         return equipmentList;
     }
 
+    //Method that saves equipment based on sent data about equipment
     @Override
     public Equipment saveEquipment(Equipment equipment, String token) {
-        String username = extractUsernameFromToken(token);
-        User user = findUserByUsername(username);
-        validateTokenExpiration(token);
-
-        validateEquipment(equipment, user);
-        validateEquipmentBridge(equipment, user);
-
-        Equipment newEquipment = buildNewEquipment(equipment);
-        return executeCreateEquipmentCommand(newEquipment);
-    }
-
-    //Method that saves equipment based on sent data about equipment
-//    @Override
-//    public Equipment saveEquipment(Equipment equipment, String token) {
-//        String username = jwtUtil.extractUsername(token.substring(7));
-//        User user = userService.findByUsername(username)
-//                .orElseThrow(() -> new RuntimeException("User not found"));
-//        if (jwtUtil.isTokenExpired(token.substring(7))) {
-//            throw new IllegalArgumentException("Token się przedawnil");
-//        }
-//
-//
-//        //###   start L2 Decorator -> Usage
-//        EquipmentValidator validator = new EquipmentValidator_Advanced();
-//        validator = new EquipmentValidator_Role(validator);
-//        validator = new EquipmentValidator_Equipment(validator);
-//        validator = new EquipmentValidator_Description(validator);
-//        if (!validator.validate(equipment, user)) {
-//            throw new IllegalArgumentException("Wyposażenie nie spełnia wymagań.");
-//        }
-//        //###   end L2 Decorator -> Usage
-//
-//        //###   start L2 Bridge -> Equipment -> Part 4
-//        if (!validatorBridge.validate(equipment, user)) {
-//            throw new IllegalArgumentException("Element wyposażenia niepoprawny");
-//        }
-//        //###   end L2 Bridge -> Equipment -> Part 4
-//
-//        //###   start L1 Factory -> Part 1 - usage
-////        Equipment newEquipment = EquipmentFactory.createEquipment(equipment.getName(), equipment.getPrice(), equipment.getDescription(), equipment.getImageName());
-////        return equipmentRepository.save(newEquipment);
-//        //###   end L1 Factory -> Part 1 - usage
-//
-//        //###   start L1 Builder -> Part 1 - usage
-//        Equipment newEquipment = new EquipmentBuilder()
-//                .setName(equipment.getName())
-//                .setPrice(equipment.getPrice())
-//                .setDescription(equipment.getDescription())
-//                .setImageName(equipment.getImageName())
-//                .build();
-////        return equipmentRepository.save(newEquipment);
-//
-//        //###   start L5 Command -> Equipment - usage
-//        Command createEquipmentCommand = new Equipment_Create_Command(newEquipment, equipmentRepository);
-//        return createEquipmentCommand.execute();
-//        //###   end L5 Command -> Equipment - usage
-//
-//        //###   end L1 Builder -> Part 1 - usage
-//
-//    }
-
-    private String extractUsernameFromToken(String token) {
-        return jwtUtil.extractUsername(token.substring(7));
-    }
-
-    private User findUserByUsername(String username) {
-        return userService.findByUsername(username)
+        String username = jwtUtil.extractUsername(token.substring(7));
+        User user = userService.findByUsername(username)
                 .orElseThrow(() -> new RuntimeException("User not found"));
-    }
-
-    private void validateTokenExpiration(String token) {
         if (jwtUtil.isTokenExpired(token.substring(7))) {
             throw new IllegalArgumentException("Token się przedawnil");
         }
-    }
 
-    //###   start L2 Decorator -> Usage
-    private void validateEquipment(Equipment equipment, User user) {
+
+        //###   start L2 Decorator -> Usage
         EquipmentValidator validator = new EquipmentValidator_Advanced();
         validator = new EquipmentValidator_Role(validator);
         validator = new EquipmentValidator_Equipment(validator);
@@ -169,35 +101,36 @@ public class EquipmentServiceImpl extends AbstractEquipmentService_Creating impl
         if (!validator.validate(equipment, user)) {
             throw new IllegalArgumentException("Wyposażenie nie spełnia wymagań.");
         }
-    }
-//###   end L2 Decorator -> Usage
+        //###   end L2 Decorator -> Usage
 
-    //###   start L2 Bridge -> Equipment -> Part 4
-    private void validateEquipmentBridge(Equipment equipment, User user) {
+        //###   start L2 Bridge -> Equipment -> Part 4
         if (!validatorBridge.validate(equipment, user)) {
             throw new IllegalArgumentException("Element wyposażenia niepoprawny");
         }
-    }
-//###   end L2 Bridge -> Equipment -> Part 4
+        //###   end L2 Bridge -> Equipment -> Part 4
 
-    //###   start L1 Builder -> Part 1 - usage
-    private Equipment buildNewEquipment(Equipment equipment) {
-        return new EquipmentBuilder()
+        //###   start L1 Factory -> Part 1 - usage
+//        Equipment newEquipment = EquipmentFactory.createEquipment(equipment.getName(), equipment.getPrice(), equipment.getDescription(), equipment.getImageName());
+//        return equipmentRepository.save(newEquipment);
+        //###   end L1 Factory -> Part 1 - usage
+
+        //###   start L1 Builder -> Part 1 - usage
+        Equipment newEquipment = new EquipmentBuilder()
                 .setName(equipment.getName())
                 .setPrice(equipment.getPrice())
                 .setDescription(equipment.getDescription())
                 .setImageName(equipment.getImageName())
                 .build();
-    }
-//###   end L1 Builder -> Part 1 - usage
+//        return equipmentRepository.save(newEquipment);
 
-    //###   start L5 Command -> Equipment - usage
-    private Equipment executeCreateEquipmentCommand(Equipment newEquipment) {
+        //###   start L5 Command -> Equipment - usage
         Command createEquipmentCommand = new Equipment_Create_Command(newEquipment, equipmentRepository);
         return createEquipmentCommand.execute();
-    }
-//###   end L5 Command -> Equipment - usage
+        //###   end L5 Command -> Equipment - usage
 
+        //###   end L1 Builder -> Part 1 - usage
+
+    }
 
     //Method that saves equipment based on sent data about equipment with mediator
     @Override
@@ -218,113 +151,63 @@ public class EquipmentServiceImpl extends AbstractEquipmentService_Creating impl
     //Method that delete equipment based on id
     @Override
     public String deleteEquipment(Long id, String token) {
-        String username = extractUsernameFromToken(token);
-        User user = findUserByUsername(username);
-        validateTokenExpiration(token);
-        validateUserRole(user);
+        String username = jwtUtil.extractUsername(token.substring(7));
 
-        return performEquipmentDeletion(id);
-    }
-
-    private void validateUserRole(User user) {
-        if (user.getRole() != Role.EMPLOYEE) {
+        User user = userService.findByUsername(username)
+                .orElseThrow(() -> new RuntimeException("User not found"));
+        if (jwtUtil.isTokenExpired(token.substring(7))) {
+            throw new IllegalArgumentException("Token się przedawnil");
+        }
+        if(user.getRole() != Role.EMPLOYEE){
             throw new IllegalArgumentException("Tylko pracownik moze usunac wyposażenie");
         }
-    }
-
-    private String performEquipmentDeletion(Long id) {
         try {
             equipmentRepository.deleteById(id);
             return "Usunięto";
-        } catch (Exception e) {
+        }catch (Exception e){
             return "Cos poszło nie tak z usuwaniem.";
         }
     }
-//    @Override
-//    public String deleteEquipment(Long id, String token) {
-//        String username = jwtUtil.extractUsername(token.substring(7));
-//
-//        User user = userService.findByUsername(username)
-//                .orElseThrow(() -> new RuntimeException("User not found"));
-//        if (jwtUtil.isTokenExpired(token.substring(7))) {
-//            throw new IllegalArgumentException("Token się przedawnil");
-//        }
-//        if(user.getRole() != Role.EMPLOYEE){
-//            throw new IllegalArgumentException("Tylko pracownik moze usunac wyposażenie");
-//        }
-//        try {
-//            equipmentRepository.deleteById(id);
-//            return "Usunięto";
-//        }catch (Exception e){
-//            return "Cos poszło nie tak z usuwaniem.";
-//        }
-//    }
 
-
+    //Method that update equipment based on sent data about equipment, equipment id
     @Override
     public Equipment updateEquipment(Equipment equipment, String token, long id) {
-        String username = extractUsernameFromToken(token);
-        User user = findUserByUsername(username);
-        validateTokenExpiration(token);
+        String username = jwtUtil.extractUsername(token.substring(7));
+        User user = userService.findByUsername(username)
+                .orElseThrow(() -> new RuntimeException("User not found"));
+        if (jwtUtil.isTokenExpired(token.substring(7))) {
+            throw new IllegalArgumentException("Token się przedawnil");
+        }
 
-        validateEquipment(equipment, user);
-        validateEquipmentBridge(equipment, user);
+        //###   start L2 Decorator -> Usage
+        EquipmentValidator validator = new EquipmentValidator_Advanced();
+        validator = new EquipmentValidator_Role(validator);
+        validator = new EquipmentValidator_Equipment(validator);
+        validator = new EquipmentValidator_Description(validator);
+        if (!validator.validate(equipment, user)) {
+            throw new IllegalArgumentException("Wyposażenie nie spełnia wymagań.");
+        }
+        //###   end L2 Decorator -> Usage
 
-        return updateExistingEquipment(equipment, id);
-    }
+        //###   start L2 Bridge -> Equipment -> Part 4
+        if (!validator.validate(equipment, user)) {
+            throw new IllegalArgumentException("Element wyposażenia niepoprawny");
+        }
+        //###   end L2 Bridge -> Equipment -> Part 4
 
-    //###   start L5 MEMENTO -> Equipment -> Usage (Saving in history)
-    private Equipment updateExistingEquipment(Equipment equipment, long id) {
+
+        //###   start L5 MEMENTO -> Equipment -> Usage (Saving in history)
         Equipment currentEquipment = getEquipmentById(id);
         equipmentCaretaker.save(new Memento<>(currentEquipment.clone()));
+        //###   end L5 MEMENTO -> Equipment -> Usage (Saving in history)
 
         currentEquipment.setName(equipment.getName());
         currentEquipment.setPrice(equipment.getPrice());
         currentEquipment.setDescription(equipment.getDescription());
 
+
         return equipmentRepository.save(currentEquipment);
     }
-//###   end L5 MEMENTO -> Equipment -> Usage (Saving in history)
-
-//    //Method that update equipment based on sent data about equipment, equipment id
-//    @Override
-//    public Equipment updateEquipment(Equipment equipment, String token, long id) {
-//        String username = jwtUtil.extractUsername(token.substring(7));
-//        User user = userService.findByUsername(username)
-//                .orElseThrow(() -> new RuntimeException("User not found"));
-//        if (jwtUtil.isTokenExpired(token.substring(7))) {
-//            throw new IllegalArgumentException("Token się przedawnil");
-//        }
-//
-//        //###   start L2 Decorator -> Usage
-//        EquipmentValidator validator = new EquipmentValidator_Advanced();
-//        validator = new EquipmentValidator_Role(validator);
-//        validator = new EquipmentValidator_Equipment(validator);
-//        validator = new EquipmentValidator_Description(validator);
-//        if (!validator.validate(equipment, user)) {
-//            throw new IllegalArgumentException("Wyposażenie nie spełnia wymagań.");
-//        }
-//        //###   end L2 Decorator -> Usage
-//
-//        //###   start L2 Bridge -> Equipment -> Part 4
-//        if (!validator.validate(equipment, user)) {
-//            throw new IllegalArgumentException("Element wyposażenia niepoprawny");
-//        }
-//        //###   end L2 Bridge -> Equipment -> Part 4
-//
-//
-//        //###   start L5 MEMENTO -> Equipment -> Usage (Saving in history)
-//        Equipment currentEquipment = getEquipmentById(id);
-//        equipmentCaretaker.save(new Memento<>(currentEquipment.clone()));
-//        //###   end L5 MEMENTO -> Equipment -> Usage (Saving in history)
-//
-//        currentEquipment.setName(equipment.getName());
-//        currentEquipment.setPrice(equipment.getPrice());
-//        currentEquipment.setDescription(equipment.getDescription());
-//
-//
-//        return equipmentRepository.save(currentEquipment);
-//    }
 
     //###   start L5 MEMENTO -> Equipment -> Usage (Undo changes)
     @Override

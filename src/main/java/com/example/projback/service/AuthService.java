@@ -47,7 +47,7 @@ public class AuthService implements UserDetailsService, AuthenticationProviderIn
 
     @Override
     public void registerUser(User user) {
-        if (isUsernameExist(user.getUsername())) {
+        if (userRepository.findByUsername(user.getUsername()).isPresent()) {
             throw new IllegalArgumentException("User already exists");
         }
 
@@ -56,10 +56,6 @@ public class AuthService implements UserDetailsService, AuthenticationProviderIn
         newUser.setUsername(user.getUsername());
         newUser.setPassword(encodedPassword);
         userRepository.save(newUser);
-    }
-
-    public boolean isUsernameExist(String username) {
-        return userRepository.findByUsername(username).isPresent();
     }
 }
 //###   end L7 Open-Closed Principle -> Part 2
