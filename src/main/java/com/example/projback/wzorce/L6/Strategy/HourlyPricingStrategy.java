@@ -9,10 +9,10 @@ import java.time.Duration;
 @Component
 public class HourlyPricingStrategy implements PricingStrategy {
     @Override
-    public void applyPricing(Reservation reservation, Room room) {
+    public long applyPricing(Reservation reservation, Room room) {
         if (room == null || reservation == null) {
             System.out.println("Błąd: Room lub Reservation jest null!");
-            return;
+            return 0;
         }
 
         long hours = (long) Math.ceil(Duration.between(reservation.getStartTime().toInstant(), reservation.getEndTime().toInstant()).toMinutes() / 60.0);
@@ -24,6 +24,7 @@ public class HourlyPricingStrategy implements PricingStrategy {
                 "liczba godzin = " + hours +
                 ", cena za godzinę = " + room.getPricePerHour() +
                 ", final_price = " + totalPrice);
+        return hours;
     }
 }
 //###   end L6 STRATEGY

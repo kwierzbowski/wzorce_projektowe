@@ -5,6 +5,6 @@ import com.example.projback.entity.Reservation;
 import com.example.projback.entity.Room;
 
 public interface PricingStrategy {
-    void applyPricing(Reservation reservation, Room room);
+    long applyPricing(Reservation reservation, Room room);
 }
 //###   end L6 STRATEGY

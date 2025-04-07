@@ -8,24 +8,22 @@ import org.springframework.stereotype.Component;
 import java.time.Duration;
 
 @Component
-public class DailyPricingStrategy extends PricingStrategy {
+public class DailyPricingStrategy implements PricingStrategy {
 
     @Override
-    public void applyPricing(Reservation reservation, Room room) {
+    public long applyPricing(Reservation reservation, Room room) {
         if (room == null || reservation == null) {
             System.out.println("Błąd: Room lub Reservation jest null!");
-            return;
+            return 0;
         }
         long days = Duration.between(reservation.getStartTime().toInstant(), reservation.getEndTime().toInstant()).toDays();
         return (days == 0) ? 1 : days;
     }
 
-    @Override
     protected double calculatePrice(Room room, long timeUnits) {
         return timeUnits * room.getPricePerDay();
     }
 
-    @Override
     protected double getUnitPrice(Room room) {
         return room.getPricePerDay();
     }
