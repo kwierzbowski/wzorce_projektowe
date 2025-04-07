@@ -43,6 +43,7 @@ public class EquipmentServiceImpl extends AbstractEquipmentService_Creating impl
     //###   end L2 Bridge -> UserService -> Usage
     //###   end L8 Odwrocenie zaleznosci -> Usage
 
+
     private final UserService userService;
     private final Caretaker<Equipment> equipmentCaretaker = new Caretaker<>();
     private final EquipmentValidator validatorBridge;
@@ -260,6 +261,7 @@ public class EquipmentServiceImpl extends AbstractEquipmentService_Creating impl
 //            return "Cos poszło nie tak z usuwaniem.";
 //        }
 //    }
+
 
     @Override
     public Equipment updateEquipment(Equipment equipment, String token, long id) {

@@ -30,6 +30,8 @@ public class AuthService implements UserDetailsService, AuthenticationProviderIn
         this.passwordEncoder = passwordEncoder;
     }
 
+
+
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         User user = userRepository.findByUsername(username)
@@ -41,6 +43,7 @@ public class AuthService implements UserDetailsService, AuthenticationProviderIn
                 .roles(user.getRole().toString())
                 .build();
     }
+
 
     //###   start L9 c,d , Part 2
     @Override

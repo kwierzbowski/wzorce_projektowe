@@ -5,22 +5,22 @@
 - [X] **Tydzień 6**
 - [X] **Tydzień 7**
 - [X] **Tydzień 8**
-- [X] **Tydzień 9️** Zastosuj zasady (19 pkt.):
-  - [x] 1. znaczących (jasnych i zrozumiałych) nazw do klas, metod i zmiennych, znaczących w całym programie to samo (bez synonimów) - 2 pkt.
-  - [x] 2. dostosuj długości metod w programie, żeby nie miały więcej niż 20 linii - 3 pkt.
-  - [X] 3. dostosuj funkcje tak by spełniały tylko jedną rolę - 3 pkt.
-  - [X] 4. dostosuj funkcje tak by były tylko na jednym poziomie abstrakcji, kolejno wywoływane funkcje coraz bardziej szczegółowe (top to botom) - 3 pkt.
-  - [X] 5. dostosuj funkcje tak, by przyjmowały maksymalnie 3 argumenty - 3 pkt.
-  - [X] 6. dodaj zwracanie wyjątków zamiast kodów błędów (3 wystąpienia) - 3 pkt.
-  - [x] 7. dostosuj kod tak, by się nie powtarzał - 1 pkt.
-  - [X] 8. wyeliminuj magiczne liczby - 1 pkt.
+- [ ] **Tydzień 9️** Zastosuj zasady (19 pkt.):
+  - [ ] 1. znaczących (jasnych i zrozumiałych) nazw do klas, metod i zmiennych, znaczących w całym programie to samo (bez synonimów) - 2 pkt.
+  - [ ] 2. dostosuj długości metod w programie, żeby nie miały więcej niż 20 linii - 3 pkt.
+  - [ ] 3. dostosuj funkcje tak by spełniały tylko jedną rolę - 3 pkt.
+  - [ ] 4. dostosuj funkcje tak by były tylko na jednym poziomie abstrakcji, kolejno wywoływane funkcje coraz bardziej szczegółowe (top to botom) - 3 pkt.
+  - [ ] 5. dostosuj funkcje tak, by przyjmowały maksymalnie 3 argumenty - 3 pkt.
+  - [ ] 6. dodaj zwracanie wyjątków zamiast kodów błędów (3 wystąpienia) - 3 pkt.
+  - [ ] 7. dostosuj kod tak, by się nie powtarzał - 1 pkt.
+  - [ ] 8. wyeliminuj magiczne liczby - 1 pkt.
      
 - [ ] **Tydzień 10** Zastosuj zasady (9 pkt.):
   - [ ] 1. utwórz 3 interfejsy funkcyjne, wykonaj ich implementacje i napisz kod używający instancji tych interfejsów poprzez zastosowanie wyrażenia lambda - 6 pkt.
   - [ ] 2. pokaż na przykładzie wykorzystanie programowania funkcyjnego w strumieniowym przetwarzaniu 3 kolekcji - 3 pkt.
      
-- [X] **Tydzień 11** Zastosuj zasady (6 pkt.):
-  - [X] 1. użyj w programie AspectJ do wykonania 3 aspektów - 6 pkt.
+- [ ] **Tydzień 11** Zastosuj zasady (6 pkt.):
+  - [ ] 1. użyj w programie AspectJ do wykonania 3 aspektów - 6 pkt.
      
 - [ ] **Tydzień 12** Zastosuj zasady (5 pkt.):
   - [ ] 1. utwórz klasę, która ma około 100 linii kodu, miesza odpowiedzialności, stosuje niewłaściwe nazwy, długie metody, dużo komentarzy, metody maja wiele argumentów

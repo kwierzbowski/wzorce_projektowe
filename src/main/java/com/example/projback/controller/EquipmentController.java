@@ -41,6 +41,7 @@ public class EquipmentController {
     @PostMapping("/add")
     public ResponseEntity<Equipment> addEquipment(@RequestBody Equipment equipment, @RequestHeader("Authorization") String token) {
         return ResponseEntity.ok(equipmentServiceProxy.saveEquipment(equipment, token));
+
     }
 
     @DeleteMapping("/delete/{id}")
