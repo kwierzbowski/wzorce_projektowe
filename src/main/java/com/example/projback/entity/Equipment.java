@@ -93,5 +93,6 @@ public class Equipment implements Cloneable, EquipmentComponent {
                 '}';
     }
     //###   end L6 Observer
+
 }
 

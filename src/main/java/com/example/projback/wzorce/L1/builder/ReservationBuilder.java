@@ -10,6 +10,7 @@ import java.util.List;
 public class ReservationBuilder {
     private Reservation reservation = new Reservation();
 
+
     public ReservationBuilder setUserId(Long userId) {
         reservation.setUserId(userId);
         return this;

@@ -119,6 +119,7 @@ public class ReservationServiceProxy implements IReservationService_Query, IRese
 
     }
 
+
     @Override
     public Reservation getEmployeeReservationById(Long reservationId, String token) {
         return reservationServiceQuery.getEmployeeReservationById(reservationId, token);
@@ -151,5 +152,6 @@ public class ReservationServiceProxy implements IReservationService_Query, IRese
     public Reservation undoLastReservationEdit() {
         return reservationServiceManipulating.undoLastReservationEdit();
     }
+
 }
 //###   end L3 Proxy -> Part 2

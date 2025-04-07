@@ -27,6 +27,7 @@ import java.util.List;
 @EnableWebSecurity
 public class SecurityConfig {
 
+
     private final JwtUtil jwtUtil;
     private final List<TokenValidatorInterface> tokenValidators;
 
@@ -94,6 +95,9 @@ public class SecurityConfig {
 
         return new ProviderManager(authProvider);
     }
+
+
+
 }
 
 

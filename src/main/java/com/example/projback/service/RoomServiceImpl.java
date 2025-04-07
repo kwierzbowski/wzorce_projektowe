@@ -121,12 +121,15 @@ public class RoomServiceImpl extends AbstractRoomService_Creating implements IRo
                 .setPricePerHour(room.getPricePerHour())
                 .build();
 
+
         //###   start L5 MEDIATOR -> Room - usage
         return roomMediator.notify(newRoom, "create", token);
         //###   end L5 MEDIATOR -> Room - usage
 
 //        return roomRepository.save(newRoom);
         //###   end L1 Builder -> Part 3 - usage
+
+
     }
 
     @Override
@@ -159,6 +162,7 @@ public class RoomServiceImpl extends AbstractRoomService_Creating implements IRo
         if (equipment == null || equipment.isEmpty()) {
             throw new IllegalArgumentException("Equipment list cannot be empty");
         }
+
         return room.getOptionalEquipment().containsAll(equipment);
     }
 

@@ -10,4 +10,5 @@ public class Employee extends User {
         this.setRole(Role.EMPLOYEE);
     }
 }
+
 //###   end L8 Liskov -> Klasa pochodna

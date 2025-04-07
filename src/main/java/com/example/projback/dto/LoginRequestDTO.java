@@ -3,6 +3,7 @@ package com.example.projback.dto;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 
+
 @AllArgsConstructor
 @NoArgsConstructor
 public class LoginRequestDTO {

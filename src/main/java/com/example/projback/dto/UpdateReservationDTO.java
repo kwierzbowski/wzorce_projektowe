@@ -15,6 +15,7 @@ public class UpdateReservationDTO {
     private Date endTime;
     private List<Long> equipment;
 
+
     public Date getEndTime() {
         return endTime;
     }
