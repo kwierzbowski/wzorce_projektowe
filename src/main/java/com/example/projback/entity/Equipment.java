@@ -93,5 +93,16 @@ public class Equipment implements Cloneable, EquipmentComponent {
                 '}';
     }
     //###   end L6 Observer
+
+    //###   start L10
+//    public Equipment(Long id, String name, Double price, String description, String imageName) {
+//        this.id = id;
+//        this.name = name;
+//        this.price = price;
+//        this.description = description;
+//        this.imageName = imageName;
+//    }
+    //###   end L10
+
 }
 
